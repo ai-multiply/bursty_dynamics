@@ -1,0 +1,6 @@
+LICENSE.txt
+setup.py
+Burst/burst_identifier.egg-info/PKG-INFO
+Burst/burst_identifier.egg-info/SOURCES.txt
+Burst/burst_identifier.egg-info/dependency_links.txt
+Burst/burst_identifier.egg-info/top_level.txt
