@@ -20,20 +20,20 @@ visuals?
 
 You can install the Burst identifier via pip:
 ```sh
-pip install burst_identifier
+pip install bursty_dynamics
 ```
 
 ## Usage
 Here's a quick overview of how to use the main functionalities of the package:
 
 ```sh
-import burst_identifier as bi
+import bursty_dynamics as bd
 
 # Load your longitudinal data into a DataFrame
 # df = load_data()
 
 # Calculate burst parameters
-burst_params = bi.calculate_scores(df, patient_id, time_col)
+burst_params = bd.calculate_scores(df, patient_id, time_col)
 ```
 
 
