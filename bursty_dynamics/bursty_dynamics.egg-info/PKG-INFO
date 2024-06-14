@@ -1,3 +1,20 @@
+Metadata-Version: 2.1
+Name: bursty_dynamics
+Version: 0.0.1
+Summary: Identifier of temporal patterns in longitudinal helath data.
+Home-page: https://github.com/ai-multiply/bursty_dynamics
+Author: AI-Multiply
+Author-email: alisha.angdembe1@gmail.com
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: seaborn
+Requires-Dist: matplotlib
+Requires-Dist: scipy
+
 # Bursty dynamics
 
 Bursty dynamics is a package designed to identify bursts of activity in longitudinal data/ (focus on EHR). It offers functionality to calculate burstiness parameters, memeory coefficient, detect trains of events in close temporal proximity to each other, and also calculate the burstiness parameter and memory coefficient of the trains. 

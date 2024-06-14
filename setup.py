@@ -8,19 +8,20 @@ DESCRIPTION = 'Identifier of temporal patterns in longitudinal helath data.'
 
     
 setup(
-    name= "Bursty_dynamics",
+    name= "bursty_dynamics",
     version = VERSION, 
     description = DESCRIPTION,
-    package_dir = {"":"Burst"},
-    packages = find_packages(where = "Burst"),
+    package_dir = {"":"bursty_dynamics"},
+    packages = find_packages(where = "bursty_dynamics"),
     long_description = long_description,
     long_description_content_type = "text/markdown",
-    # url = "https://github.com/{incomplete}",
+    url = "https://github.com/ai-multiply/bursty_dynamics",
     author = "AI-Multiply",
     author_email = "alisha.angdembe1@gmail.com",
     # licence = "MIT",
-    classifiers = [],
-    install_requires = []
+    classifiers = ["Programming Language :: Python :: 3"],
+    python_requires='>=3.6',
+    install_requires = ['numpy','pandas', 'seaborn','matplotlib','scipy' ]
 )
 
 

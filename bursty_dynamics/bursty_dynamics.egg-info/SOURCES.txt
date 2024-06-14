@@ -1,0 +1,7 @@
+LICENSE.txt
+setup.py
+bursty_dynamics/bursty_dynamics.egg-info/PKG-INFO
+bursty_dynamics/bursty_dynamics.egg-info/SOURCES.txt
+bursty_dynamics/bursty_dynamics.egg-info/dependency_links.txt
+bursty_dynamics/bursty_dynamics.egg-info/requires.txt
+bursty_dynamics/bursty_dynamics.egg-info/top_level.txt
