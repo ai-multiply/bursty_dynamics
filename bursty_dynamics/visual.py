@@ -1,13 +1,13 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def gridplot(data, bins=25, lower_limit=0, text_scaling=6, figsize=(9, 7), **kwargs):
+def gridplot(df, bins=25, lower_limit=0, text_scaling=6, figsize=(9, 7), **kwargs):
     """
     Create a grid plot of Memory Coefficient (MC) vs Burstiness Parameter (BP) with a color bar.
 
     Parameters
     ----------
-    data : DataFrame
+    df : DataFrame
         Input DataFrame containing columns 'MC' and 'BP'.
     bins : int, optional
         Number of bins for the histogram. Default is 25.
@@ -24,22 +24,23 @@ def gridplot(data, bins=25, lower_limit=0, text_scaling=6, figsize=(9, 7), **kwa
         The figure object containing the plot.
     """
     plt.figure(figsize=figsize)
-    cmap = plt.cm.get_cmap('viridis').copy()
+    cmap = plt.cm.viridis
     cmap.set_under('grey')
     sns.set(style="white", font_scale=text_scaling/6)
-    g = sns.histplot(data=data, x="MC", y="BP", bins=bins, cbar=True, cmap=cmap, 
+    g = sns.histplot(data=df, x="MC", y="BP", bins=bins, cbar=True, cmap=cmap, 
                      cbar_kws=dict(label = 'count'),vmin= lower_limit,  **kwargs)
     g.set_xlim(-1, 1)
     g.set_ylim(-1, 1)
     g.set_xticks([-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1])
     g.set_yticks([-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1])
     fig = g.figure
+    plt.close(fig)
     return fig
     
     
 def histogram(df, hist=True, set_axis=False, **kwargs):
     """
-    Plot histograms and/or kernel density estimates (KDE) for Burstiness Parameter (BP) and Memory Coefficient (MC).
+    Plot histograms for Burstiness Parameter (BP) and Memory Coefficient (MC).
 
     Parameters
     ----------
@@ -73,6 +74,7 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
         if set_axis:
             plt.xlim(-1, 1)
         figures.append(fig)
+        plt.close(fig)
     elif hist == "Both":
         fig = plt.figure()
         sns.histplot(data=df, x="BP", kde=True, color='blue', **kwargs)
@@ -82,6 +84,7 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
         if set_axis:
             plt.xlim(-1, 1)
         figures.append(fig)
+        plt.close(fig)
     elif hist is True:
         for column, color in hist_options.values():
             fig = plt.figure()
@@ -89,6 +92,7 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
             if set_axis:
                 plt.xlim(-1, 1)
             figures.append(fig)
+            plt.close(fig)
     else:
         print("Invalid 'hist' parameter. Please choose from 'BP', 'MC', 'Both', or True.")
         
@@ -118,17 +122,18 @@ def scatterplot(df, set_axis=False, **kwargs):
         plot.ax_joint.set_xlim(-1, 1)
         plot.ax_joint.set_ylim(-1, 1)
     plot.fig.set_size_inches((9.5, 7))
+    plt.close(plot.fig)
     return plot
 
 
 
-def train_duration(train_info, x_limit=5, **kwargs):
+def train_duration(train_info_df, x_limit=5, **kwargs):
     """
     Plots a distribution of train durations in years from the given DataFrame.
 
     Parameters
     ----------
-    train_info : DataFrame
+    train_info_df : DataFrame
         A DataFrame containing a column named 'train_duration_yrs' which 
         holds the duration of training in years for different entries.
     x_limit : int, optional
@@ -140,8 +145,8 @@ def train_duration(train_info, x_limit=5, **kwargs):
         This function only displays the plot and does not return any value.
     """
     fig, ax = plt.subplots()
-    sns.histplot(train_info["train_duration_yrs"], kde=True, 
-                 bins=round(train_info['train_duration_yrs'].max()*2), color = 'darkblue', **kwargs)
+    sns.histplot(train_info_df["train_duration_yrs"], kde=True, 
+                 bins=round(train_info_df['train_duration_yrs'].max()*2), color = 'darkblue', **kwargs)
     ax.set_xlabel('Train duration (years)', fontsize=14)
     ax.set_ylabel('Density', fontsize=14) 
     ax.tick_params(axis='both', which='major', labelsize=14)
@@ -149,15 +154,15 @@ def train_duration(train_info, x_limit=5, **kwargs):
     plt.close(fig)
     return fig
 
-def event_counts(train_info, x_limit=30, **kwargs):
+def event_counts(train_info_df, x_limit=30, **kwargs):
     """
     Plots a count of unique events per train from the given DataFrame.
 
     Parameters
     ----------
-    train_info : DataFrame
+    train_info_df : DataFrame
         A DataFrame containing a column named 'unique_event_counts' which 
-        holds the count of unique events for different entries.
+        holds the count of unique events (no duplicates at same time) for different entries.
     x_limit : int, optional
         The upper limit for the x-axis. Default is 30.
 
@@ -167,13 +172,12 @@ def event_counts(train_info, x_limit=30, **kwargs):
         The figure object containing the plot.
     """
     fig, ax = plt.subplots(figsize=(8, 5))
-    sns.countplot(data=train_info[train_info["unique_event_counts"] <= x_limit], 
+    sns.countplot(data=train_info_df[train_info_df["unique_event_counts"] <= x_limit], 
                   x="unique_event_counts", color='darkblue', ax=ax, **kwargs)
     ax.set_xlabel('Events counts per train', fontsize=14)
     ax.set_ylabel('Counts', fontsize=14)
     ax.tick_params(axis='both', which='major', labelsize=14)
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
-    
     plt.close(fig)  # Prevents the plot from displaying in interactive environments
     
     return fig

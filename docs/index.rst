@@ -13,7 +13,7 @@ Bursty Dynamics documentation
    :hidden:
    
    User Guide <source/user_guide/index.rst>
-   Modules <source/modules.rst>
+   API Reference <source/modules.rst>
 
 
  
@@ -21,5 +21,42 @@ Bursty Dynamics documentation
 `Example notebook <https://github.com/ai-multiply/bursty_dynamics/blob/main/example/examples.ipynb>`_
 
 
-Bursty dynamics is a package designed to identify bursts of activity in longitudinal data. It offers functionality to calculate burst parameters, memeory coefficient, and detect clusters of events in close temporal proximity to each other.
+Bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results. This documentation provides a comprehensive guide on how to use the package.
 
+
+.. grid:: 1 1 2 2
+    :gutter: 2
+
+    .. grid-item-card::
+        :text-align: center
+
+        User guide
+        ^^^
+
+        Provides information on how to get started with bursty_dynamics.
+
+        +++
+
+        .. button-ref:: source/user_guide/index
+            :expand:
+            :color: secondary
+            :click-parent:
+
+            Click here
+            
+    .. grid-item-card::
+      :text-align: center
+
+      API Reference
+      ^^^
+
+      Detailed description of the functions and modules in bursty_dynamcis.
+
+      +++
+
+      .. button-ref:: source/modules
+         :expand:
+         :color: secondary
+         :click-parent:
+
+         Click here

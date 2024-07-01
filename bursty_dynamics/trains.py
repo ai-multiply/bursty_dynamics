@@ -13,20 +13,21 @@ def train_detection(df, subject_id, time_col, max_iet, time_unit='days', min_bur
 
     Parameters
     ----------
-    df : DataFrame
-        The DataFrame containing the data.
-    subject_id : str
-        The column name for patient IDs.
-    time_col : str
-        The column name for the datetime values.
-    max_iet : int
-        Maximum distance between consecutive events in a train.
-    time_unit : str, optional
-        Unit of time for the intervals ('minutes', 'hours', or 'days'). Default is 'days'.
-    min_burst : int, optional
-        Minimum number of events to form a train. Default is 3.
-    only_trains : bool, optional
-        Whether to return only the events that form trains. Default is True.
+        df : DataFrame
+            The DataFrame containing the data.
+        subject_id : str
+            The column name for patient IDs.
+        time_col : str
+            The column name for the datetime values.
+        max_iet : int
+            Maximum distance between consecutive events in a train.
+        time_unit : str, optional
+            Unit of time for the intervals ('seconds', 'minutes', 'hours', 'days', 'weeks', 'months', and 'years').
+            Default is 'days'.
+        min_burst : int, optional
+            Minimum number of events to form a train. Default is 3.
+        only_trains : bool, optional
+            Whether to return only the events that form trains. Default is True.
     
     Returns
     -------
@@ -49,7 +50,7 @@ def train_detection(df, subject_id, time_col, max_iet, time_unit='days', min_bur
     return train_df
 
 
-def calculate_train_info(train_df, subject_id, time_col, summary_statistic=None):
+def train_info(train_df, subject_id, time_col, summary_statistic=None):
     """
     Calculate summary statistics for train data.
 
@@ -99,7 +100,7 @@ def calculate_train_info(train_df, subject_id, time_col, summary_statistic=None)
     return train_sum
 
 
-def calculate_scores_train(train_df, subject_id, time_col, min_event_n=None, scatter=False, hist=False):
+def train_scores(train_df, subject_id, time_col, min_event_n=None, scatter=False, hist=False):
     """
     Calculate Burstiness Parameter (BP) and Memory Coefficient (MC) for each train_id per subject_id.
     
@@ -258,4 +259,4 @@ def calculate_train_duration(df_updated, subject_id, time_col):
 
 
 
-__all__ = ['train_detection', 'calculate_train_info', 'calculate_scores_train']
+__all__ = ['train_detection', 'train_info', 'train_scores']

@@ -7,6 +7,7 @@
   <title>What is Bursty Dynamics? &mdash; Bursty Dynamics 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
       <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=a7840842" />
 
   
@@ -19,6 +20,7 @@
         <script src="../../_static/documentation_options.js?v=2ed17a75"></script>
         <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -47,11 +49,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">What is Bursty Dynamics?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">What is Bursty Dynamics?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#key-features">Key Features</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/ai-multiply/bursty_dynamics/blob/main/example/examples.ipynb">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">API Reference</a></li>
 </ul>
 
         </div>
@@ -81,7 +87,22 @@
              
   <section id="what-is-bursty-dynamics">
 <span id="whatisbd"></span><h1>What is Bursty Dynamics?<a class="headerlink" href="#what-is-bursty-dynamics" title="Link to this heading"></a></h1>
-<p>Bursty dynamics is a package designed to identify bursts of activity in longitudinal data/ (focus on EHR). It offers functionality to calculate burstiness parameters, memeory coefficient, detect trains of events in close temporal proximity to each other, and also calculate the burstiness parameter and memory coefficient of the trains.</p>
+<p>Bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.</p>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Burstiness Parameter (BP) and Memory Coefficient (MC) Calculation:</strong>
+Calculate BP and MC to quantify the irregularity and memory effects of event timing within longitudinal data.</p></li>
+<li><p><strong>Event Train Detection:</strong>
+Detect and label event trains based on user-defined criteria such as maximum inter-event time and minimum burst size.</p></li>
+<li><p><strong>Train-Level Analysis:</strong>
+Analyze BP and MC for detected event trains, providing insights into temporal patterns within clusters of events.</p></li>
+<li><p><strong>Visualization Tools:</strong>
+Visualize temporal patterns with scatter plots, histograms, kernel density estimates (KDE), and more, facilitating interpretation of analysis results.</p></li>
+<li><p><strong>User-Friendly Interface:</strong>
+Designed for ease of use, with clear function parameters and output formats, making it accessible to both novice and experienced users.</p></li>
+</ul>
+</section>
 </section>
 
 

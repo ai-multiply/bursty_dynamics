@@ -1,3 +1,5 @@
+.. _user_guide: 
+
 ###########
 User guide
 ###########
@@ -8,6 +10,7 @@ User guide
 
    whatisbd
    installation
+   Example <https://github.com/ai-multiply/bursty_dynamics/blob/main/example/examples.ipynb>
 
 
 

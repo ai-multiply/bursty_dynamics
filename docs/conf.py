@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.abspath('..'))  # Adjust the path as necessary
 
 
 extensions = ['sphinx.ext.autodoc',
+              'sphinx_design',
 ]
 
 templates_path = ['_templates']

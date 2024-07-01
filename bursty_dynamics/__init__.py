@@ -1,5 +1,5 @@
-from trains import train_detection, calculate_train_info, calculate_scores_train
+from trains import train_detection, train_info, train_scores
 from scores import calculate_scores
-from visual import gridplot, histogram, scatterplot
+from visual import gridplot, histogram, scatterplot, train_duration, event_counts
 
 
