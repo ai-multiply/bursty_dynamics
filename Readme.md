@@ -5,7 +5,7 @@ Bursty dynamics is a package designed to identify bursts of activity in longitud
 credit: 
 This package implements the alternate burst parameter described in the paper ‘Measuring Burstiness for Finite Event Sequences’ by Kim, Eun-Kyeong, and Hang-Hyun Jo, and memeory coefficient described in ‘Burstiness and Memory in Complex Systems’ by Goh, K.-I., and A.-L. Barabási. 
 
-credit for train?
+credit for train??
 
 
 other papers of influence:
