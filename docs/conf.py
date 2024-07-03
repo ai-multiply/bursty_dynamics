@@ -4,7 +4,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import os,sys
-sys.path.insert(0, os.path.abspath('..bursty_dynamics'))  # Adjust the path as necessary
+sys.path.insert(0, os.path.abspath('../bursty_dynamics'))  # Adjust the path as necessary
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
