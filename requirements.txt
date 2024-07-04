@@ -3,3 +3,7 @@ sphinx_rtd_theme
 sphinx_design
 ghp-import
 numpy
+pandas
+seaborn
+matplotlib
+scipy
