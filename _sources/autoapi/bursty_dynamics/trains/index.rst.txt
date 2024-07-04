@@ -1,0 +1,98 @@
+bursty_dynamics.trains
+======================
+
+.. py:module:: bursty_dynamics.trains
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bursty_dynamics.trains.train_detection
+   bursty_dynamics.trains.train_info
+   bursty_dynamics.trains.train_scores
+
+
+Module Contents
+---------------
+
+.. py:function:: train_detection(df, subject_id, time_col, max_iet, time_unit='days', min_burst=3, only_trains=True)
+
+   Detects and assigns train IDs to events in the provided DataFrame based on the specified parameters.
+
+   Parameters
+   ----------
+       df : DataFrame
+           The DataFrame containing the data.
+       subject_id : str
+           The column name for patient IDs.
+       time_col : str
+           The column name for the datetime values.
+       max_iet : int
+           Maximum distance between consecutive events in a train.
+       time_unit : str, optional
+           Unit of time for the intervals ('seconds', 'minutes', 'hours', 'days', 'weeks', 'months', and 'years').
+           Default is 'days'.
+       min_burst : int, optional
+           Minimum number of events to form a train. Default is 3.
+       only_trains : bool, optional
+           Whether to return only the events that form trains. Default is True.
+
+   Returns
+   -------
+   DataFrame
+       DataFrame with `train_id` included which indicates the train the events belong to.
+
+
+.. py:function:: train_info(train_df, subject_id, time_col, summary_statistic=None)
+
+   Calculate summary statistics for train data.
+
+   Parameters
+   ----------
+   train_df : DataFrame
+       DataFrame containing train information.
+   subject_id : str
+       Name of the column containing subject IDs.
+   time_col : str
+       Name of the column containing timestamps.
+   summary_statistic : bool, optional
+       Whether to print summary statistics. Default is False.
+
+   Returns
+   -------
+   DataFrame
+       DataFrame with calculated train information.
+
+
+.. py:function:: train_scores(train_df, subject_id, time_col, min_event_n=None, scatter=False, hist=False)
+
+   Calculate Burstiness Parameter (BP) and Memory Coefficient (MC) for each train_id per subject_id.
+
+   Parameters
+   ----------
+   train_df : pd.DataFrame
+       Input DataFrame.
+   subject_id : str
+       Name of the column containing subject IDs.
+   time_col : str
+       Name of the column containing the date.
+   min_event_n : int, optional
+       Maximum IET for filtering events. Defaults to None.
+   scatter : bool, optional
+       Whether to plot scatter plot. Defaults to False.
+   hist : str or None, optional
+       Type of histogram to plot. Options:
+       - True: Plot histograms for both BP and MC.
+       - "BP": Plot histogram for BP only.
+       - "MC": Plot histogram for MC only.
+       - "Both": Plot histograms for both BP and MC on the same plot.
+       - False: Do not plot any histograms. Defaults to False.
+       
+   Returns
+   -------
+   pd.DataFrame
+       DataFrame with Burstiness Parameter (BP) and Memory Coefficient (MC) for each train_id per subject_id.
+
+
