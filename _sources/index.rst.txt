@@ -37,7 +37,7 @@ Bursty_dynamics is a Python package designed to facilitate the analysis of tempo
 
         +++
 
-        .. button-ref:: source/user_guide/index.rst
+        .. button-ref:: source/user_guide/index
             :expand:
             :color: secondary
             :click-parent:
@@ -54,7 +54,7 @@ Bursty_dynamics is a Python package designed to facilitate the analysis of tempo
 
       +++
 
-      .. button-ref:: source/modules.rst
+      .. button-ref:: source/modules
          :expand:
          :color: secondary
          :click-parent:
