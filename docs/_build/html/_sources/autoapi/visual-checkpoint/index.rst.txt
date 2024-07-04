@@ -1,0 +1,119 @@
+visual-checkpoint
+=================
+
+.. py:module:: visual-checkpoint
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   visual-checkpoint.gridplot
+   visual-checkpoint.histogram
+   visual-checkpoint.scatterplot
+   visual-checkpoint.train_duration
+   visual-checkpoint.event_counts
+
+
+Module Contents
+---------------
+
+.. py:function:: gridplot(df, bins=25, lower_limit=0, text_scaling=6, figsize=(9, 7), **kwargs)
+
+   Create a grid plot of Memory Coefficient (MC) vs Burstiness Parameter (BP) with a color bar.
+
+   Parameters
+   ----------
+   df : DataFrame
+       Input DataFrame containing columns 'MC' and 'BP'.
+   bins : int, optional
+       Number of bins for the histogram. Default is 25.
+   lower_limit : int, optional
+       Minimum value for the color scale. Values below this will be colored grey. Default is 0.
+   text_scaling : float, optional
+       Scaling factor for the text in the plot. Default is 6.
+   figsize : tuple, optional
+       Size of the figure. Default is (9, 7).
+
+   Returns
+   -------
+   matplotlib.figure.Figure
+       The figure object containing the plot.
+
+
+.. py:function:: histogram(df, hist=True, set_axis=False, **kwargs)
+
+   Plot histograms for Burstiness Parameter (BP) and Memory Coefficient (MC).
+
+   Parameters
+   ----------
+   df : DataFrame
+       Input DataFrame containing columns 'BP' and 'MC'.
+   hist : bool or str, optional
+       If True, plot separate histograms for 'BP' and 'MC'.
+       If 'Both', plot overlapping histograms for 'BP' and 'MC'.
+       If 'BP' or 'MC', plot histogram for the specified column.
+       Default is True.
+   set_axis : bool, optional
+       Whether to set axis limits to [-1, 1]. Default is False.
+
+   Returns
+   -------
+   list
+       List of matplotlib.figure.Figure objects containing the generated plots.
+
+
+.. py:function:: scatterplot(df, set_axis=False, **kwargs)
+
+   Create a scatter plot with marginal histograms showing the relationship between 'MC' and 'BP'.
+
+   Parameters
+   ----------
+   df : DataFrame
+       Input DataFrame containing columns 'MC' and 'BP'.
+   set_axis : bool, optional
+       Whether to set axis limits to [-1, 1]. Default is False.
+
+   Returns
+   -------
+   seaborn.axisgrid.JointGrid
+       JointGrid object containing the scatter plot and marginal histograms.
+
+
+.. py:function:: train_duration(train_info_df, x_limit=5, **kwargs)
+
+   Plots a distribution of train durations in years from the given DataFrame.
+
+   Parameters
+   ----------
+   train_info_df : DataFrame
+       A DataFrame containing a column named 'train_duration_yrs' which 
+       holds the duration of training in years for different entries.
+   x_limit : int, optional
+       The upper limit for the x-axis. Default is 5.
+
+   Returns
+   -------
+   None
+       This function only displays the plot and does not return any value.
+
+
+.. py:function:: event_counts(train_info_df, x_limit=30, **kwargs)
+
+   Plots a count of unique events per train from the given DataFrame.
+
+   Parameters
+   ----------
+   train_info_df : DataFrame
+       A DataFrame containing a column named 'unique_event_counts' which 
+       holds the count of unique events (no duplicates at same time) for different entries.
+   x_limit : int, optional
+       The upper limit for the x-axis. Default is 30.
+
+   Returns
+   -------
+   matplotlib.figure.Figure
+       The figure object containing the plot.
+
+

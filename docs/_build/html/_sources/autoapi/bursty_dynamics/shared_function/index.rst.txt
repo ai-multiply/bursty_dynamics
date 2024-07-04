@@ -1,0 +1,54 @@
+bursty_dynamics.shared_function
+===============================
+
+.. py:module:: bursty_dynamics.shared_function
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bursty_dynamics.shared_function.remove_duplicate_events
+   bursty_dynamics.shared_function.burstiness_parameter
+   bursty_dynamics.shared_function.memory_coefficient
+
+
+Module Contents
+---------------
+
+.. py:function:: remove_duplicate_events(df, subject_id, time_col)
+
+   Parameters:
+   train_df (DataFrame): DataFrame containing train information.
+   subject_id (str): Name of the column containing subject IDs.
+   time_col (str): Name of the column containing timestamps.
+
+   Returns:
+   DataFrame: DataFrame with duplicate events removed.
+
+
+.. py:function:: burstiness_parameter(events, find_interval_times)
+
+   Computes burstiness parameter using Kim and Jo (2016) formula
+       
+   :param events: a list of numeric timestamps
+   :return a real number
+
+   .. note::
+   Kim, Eun-Kyeong, and Hang-Hyun Jo. ‘Measuring Burstiness for Finite Event Sequences’. Physical Review E 94, no. 3 (15 September 2016): 032311. https://doi.org/10.1103/PhysRevE.94.032311.    
+
+
+
+.. py:function:: memory_coefficient(events, find_interval_times)
+
+   Computes memory coefficient using Goh and Barabási (2008) formula
+
+   :param events: a list of numeric timestamps
+   :return a real number
+
+   .. note::
+   Goh, K.-I., and A.-L. Barabási. ‘Burstiness and Memory in Complex Systems’. EPL (Europhysics Letters) 81, no. 4 (February 2008): 48002. https://doi.org/10.1209/0295-5075/81/48002.
+
+
+

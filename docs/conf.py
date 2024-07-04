@@ -4,7 +4,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import os,sys
-sys.path.insert(0, os.path.abspath('../bursty_dynamics'))  # Adjust the path as necessary
+sys.path.insert(0, os.path.abspath('..'))  # Adjust the path as necessary
+sys.path.insert(0, os.path.abspath('../bursty_dynamics'))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -20,6 +21,7 @@ release = '0.1'
 extensions = ['sphinx.ext.autodoc',
               'sphinx_design',
 ]
+
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**/.ipynb_checkpoints']
@@ -38,6 +40,9 @@ html_css_files = [
 
 
 # bursty_dynamics
+#     - .github
+#         - workflows
+#            - gh-pages.yml
 #     - bursty_dynamics
 #         - __init__.py
 #         - trains.py
@@ -48,4 +53,9 @@ html_css_files = [
 #         - conf.py
 #         - index.rst
 #         - source
+#             - user_guide
+#                 - index.rst
 #             - bursty_dynamics.rst
+#             - modules.rst
+#         - _build
+#             - html

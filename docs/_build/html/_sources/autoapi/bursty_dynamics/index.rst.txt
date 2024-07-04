@@ -1,0 +1,18 @@
+bursty_dynamics
+===============
+
+.. py:module:: bursty_dynamics
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/bursty_dynamics/scores/index
+   /autoapi/bursty_dynamics/shared_function/index
+   /autoapi/bursty_dynamics/trains/index
+   /autoapi/bursty_dynamics/visual/index
+
+

@@ -1,0 +1,46 @@
+bursty_dynamics.scores
+======================
+
+.. py:module:: bursty_dynamics.scores
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bursty_dynamics.scores.calculate_scores
+
+
+Module Contents
+---------------
+
+.. py:function:: calculate_scores(df, subject_id, time_col, scatter=False, hist=False)
+
+   Calculate burstiness parameter and memory coefficient.
+
+   Parameters
+   ----------
+   df : DataFrame
+       Input DataFrame.
+   subject_id : str
+       Name of the column containing subject IDs.
+   time_col : str
+       Name of the column containing the date.
+   scatter : bool, optional
+       Whether to plot scatter plot. Default is False.
+   hist : bool or str, optional
+       Type of histogram to plot:
+           - True: Plot histograms for both Burstiness Parameter (BP) and Memory Coefficient (MC).
+           - "BP": Plot histogram for Burstiness Parameter only.
+           - "MC": Plot histogram for Memory Coefficient only.
+           - "Both": Plot histograms for both BP and MC on the same plot.
+           - False or None: Do not plot any histograms. Default is False.
+
+   Returns
+   -------
+   DataFrame
+       Merged DataFrame with added columns for burstiness parameter (BP)
+       and memory coefficient (MC) scores.
+
+
