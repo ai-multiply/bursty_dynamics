@@ -50,7 +50,10 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">What is Bursty Dynamics?</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#key-features">Key Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-features">Key Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-burstiness-parameter">What is Burstiness parameter?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
@@ -96,12 +99,20 @@ Calculate BP and MC to quantify the irregularity and memory effects of event tim
 <li><p><strong>Event Train Detection:</strong>
 Detect and label event trains based on user-defined criteria such as maximum inter-event time and minimum burst size.</p></li>
 <li><p><strong>Train-Level Analysis:</strong>
-Analyze BP and MC for detected event trains, providing insights into temporal patterns within clusters of events.</p></li>
+Analyse BP and MC for detected event trains, providing insights into temporal patterns within clusters of events.</p></li>
 <li><p><strong>Visualization Tools:</strong>
-Visualize temporal patterns with scatter plots, histograms, kernel density estimates (KDE), and more, facilitating interpretation of analysis results.</p></li>
+Visualise temporal patterns with scatter plots, histograms, kernel density estimates (KDE), and more, facilitating interpretation of analysis results.</p></li>
 <li><p><strong>User-Friendly Interface:</strong>
 Designed for ease of use, with clear function parameters and output formats, making it accessible to both novice and experienced users.</p></li>
 </ul>
+<section id="what-is-burstiness-parameter">
+<h3>What is Burstiness parameter?<a class="headerlink" href="#what-is-burstiness-parameter" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/pic1.png"><img alt="../../_images/pic1.png" src="../../_images/pic1.png" style="width: 345.0px; height: 270.0px;" /></a>
+<p>Burstiness parameter is a quantitative measure of the irregularity of events occurring over time. The burstiness parameter B (Goh and Barabasi, 2008) is measured using the mean (μ) and standard deviation (σ) of the inter-event time distribution as shown in the equation below.</p>
+<a class="reference internal image-reference" href="../../_images/equation1.png"><img alt="../../_images/equation1.png" src="../../_images/equation1.png" style="width: 284.0px; height: 62.0px;" /></a>
+<p>The score ranges between -1 and 1, where a score closer to -1 indicates more regular intervals between events, a score near 0 suggests a random distribution of events, and a value score to 1 indicates a more severe burst pattern, when σ→∞, characterized by rapid, intense occurrences of events. This score is crucial in differentiating between regular, random, and bursty time series. However, the burstiness score in the equation above is dependent on the length of events in the time series. Therefore, we use the measure, burstiness parameter A, defined by (Kim and Jo, 2016) as an extension of (Goh and Barabasi, 2008) that accounts for the varying length of events.</p>
+<a class="reference internal image-reference" href="../../_images/equation2.png"><img alt="../../_images/equation2.png" src="../../_images/equation2.png" style="width: 270.0px; height: 70.0px;" /></a>
+</section>
 </section>
 </section>
 
