@@ -126,8 +126,21 @@ def train_scores(train_df, subject_id, time_col, min_event_n=None, scatter=False
         
     Returns
     -------
-    pd.DataFrame
-        DataFrame with Burstiness Parameter (BP) and Memory Coefficient (MC) for each train_id per subject_id.
+    tuple or DataFrame
+        If both scatter and hist are True: returns (merged_df, scatter_plot, hist_plot).
+        If only scatter is True: returns (merged_df, scatter_plot).
+        If only hist is True: returns (merged_df, hist_plot).
+        If neither scatter nor hist is True: returns merged_df. 
+        
+    Notes
+    -----
+    - `merged_df` : DataFrame
+        The input DataFrame with burstiness parameter (BP) and memory coefficient (MC) for each train_id per subject_id.
+    - `scatter_plot` : matplotlib.figure.Figure or None
+        The figure object containing the scatter plot (if scatter=True).
+    - `hist_plots` : matplotlib.figure.Figure or None
+        The figure objects containing the histogram (if hist=True).
+        
     """
         
     # Convert the time column to datetime

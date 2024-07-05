@@ -37,10 +37,10 @@ def calculate_scores(df, subject_id, time_col, scatter=False, hist=False):
     -----
     - `merged_df` : DataFrame
         The input DataFrame with added columns for burstiness parameter (BP) and memory coefficient (MC) scores.
-    - `scatter_plot` : seaborn.axisgrid.JointGrid, optional
-        JointGrid object containing the scatter plot and marginal histograms (if scatter=True).
-    - `hist_plot` : object, optional
-        Object representing the histogram plot (if hist=True).
+    - `scatter_plot` : matplotlib.figure.Figure or None
+        The figure object containing the scatter plot (if scatter=True).
+    - `hist_plots` : matplotlib.figure.Figure or None
+        The figure objects containing the histogram (if hist=True).
     """
     try:
         df[time_col] = pd.to_datetime(df[time_col]) # Convert time_col to datetime

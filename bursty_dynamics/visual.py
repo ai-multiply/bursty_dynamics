@@ -111,11 +111,13 @@ def scatterplot(df, set_axis=False, **kwargs):
         Input DataFrame containing columns 'MC' and 'BP'.
     set_axis : bool, optional
         Whether to set axis limits to [-1, 1]. Default is False.
+    kwargs
+        Additional keyword arguments passed to `sns.jointplot`.
 
     Returns
     -------
-    seaborn.axisgrid.JointGrid
-        JointGrid object containing the scatter plot and marginal histograms.
+    matplotlib.figure.Figure
+        The figure object containing the scatter plot and marginal histograms.
     """
     sns.set_theme(style='white')
     plot= sns.jointplot(data=df, x="MC", y="BP", kind="reg", scatter_kws=dict(alpha=0.3, color='blue'),  line_kws=dict(color='black', linewidth=1),

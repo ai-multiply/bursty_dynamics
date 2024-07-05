@@ -181,9 +181,32 @@ Default is 'days'.</p>
 <section id="id4">
 <h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <dl class="simple">
-<dt>pd.DataFrame</dt><dd><p>DataFrame with Burstiness Parameter (BP) and Memory Coefficient (MC) for each train_id per subject_id.</p>
+<dt>tuple or DataFrame</dt><dd><p>If both scatter and hist are True: returns (merged_df, scatter_plot, hist_plot).
+If only scatter is True: returns (merged_df, scatter_plot).
+If only hist is True: returns (merged_df, hist_plot).
+If neither scatter nor hist is True: returns merged_df.</p>
 </dd>
 </dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>merged_df</cite><span class="classifier">DataFrame</span></dt><dd><p>The input DataFrame with burstiness parameter (BP) and memory coefficient (MC) for each train_id per subject_id.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>scatter_plot</cite><span class="classifier">matplotlib.figure.Figure or None</span></dt><dd><p>The figure object containing the scatter plot (if scatter=True).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>hist_plots</cite><span class="classifier">matplotlib.figure.Figure or None</span></dt><dd><p>The figure objects containing the histogram (if hist=True).</p>
+</dd>
+</dl>
+</li>
+</ul>
 </section>
 </dd></dl>
 
