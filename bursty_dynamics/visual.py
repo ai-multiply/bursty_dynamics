@@ -65,7 +65,6 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
         "BP": ("BP", "blue"),
         "MC": ("MC", "magenta")}
     
-    figures = []
 
     if hist in hist_options:
         column, color = hist_options[hist]
@@ -73,8 +72,9 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
         sns.histplot(data=df, x=column, kde=True, color=color, **kwargs)
         if set_axis:
             plt.xlim(-1, 1)
-        figures.append(fig)
         plt.close(fig)
+        return fig
+    
     elif hist == "Both":
         fig = plt.figure()
         sns.histplot(data=df, x="BP", kde=True, color='blue', **kwargs)
@@ -83,20 +83,22 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
         plt.legend(labels=['BP', 'MC'])
         if set_axis:
             plt.xlim(-1, 1)
-        figures.append(fig)
         plt.close(fig)
+        return fig
+    
     elif hist is True:
-        for column, color in hist_options.values():
-            fig = plt.figure()
-            sns.histplot(data=df, x=column, kde=True, color=color, **kwargs)
+        fig, axs = plt.subplots(1, len(hist_options), figsize=(12, 6))  # Create subplots based on number of hist_options
+        for i, (column, color) in enumerate(hist_options.values()):
+            sns.histplot(data=df, x=column, kde=True, color=color, ax=axs[i], **kwargs)
+            axs[i].set_xlabel(column)
             if set_axis:
-                plt.xlim(-1, 1)
-            figures.append(fig)
-            plt.close(fig)
+                axs[i].set_xlim(-1, 1)
+        plt.close(fig)
+        return fig
+    
     else:
         print("Invalid 'hist' parameter. Please choose from 'BP', 'MC', 'Both', or True.")
         
-    return figures
         
 
 def scatterplot(df, set_axis=False, **kwargs):
@@ -123,7 +125,7 @@ def scatterplot(df, set_axis=False, **kwargs):
         plot.ax_joint.set_ylim(-1, 1)
     plot.fig.set_size_inches((9.5, 7))
     plt.close(plot.fig)
-    return plot
+    return plot.fig
 
 
 

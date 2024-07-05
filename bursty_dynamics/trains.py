@@ -146,13 +146,24 @@ def train_scores(train_df, subject_id, time_col, min_event_n=None, scatter=False
 
     merged_df = pd.merge(B_score, MC, on=[subject_id, 'train_id'], how='outer')
     
+    scatter_plot = None
+    hist_plots = None
+        
     if scatter:
-        scatterplot(merged_df) #scatter plot
+        scatter_plot = scatterplot(merged_df) #scatter plot
         
     if hist:
-        histogram(merged_df, hist) #histogram
+        hist_plots = histogram(merged_df, hist) #histogram
+        
+    if scatter_plot and hist_plots:
+        return merged_df, scatter_plot, hist_plots
+    elif scatter_plot:
+        return merged_df, scatter_plot
+    elif hist_plots:
+        return merged_df, hist_plots
+    else:
+        return merged_df
 
-    return merged_df
 
 #------------------------------------------
 

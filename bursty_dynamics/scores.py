@@ -27,9 +27,20 @@ def calculate_scores(df, subject_id, time_col, scatter=False, hist=False):
 
     Returns
     -------
-    DataFrame
-        Merged DataFrame with added columns for burstiness parameter (BP)
-        and memory coefficient (MC) scores.
+    tuple or DataFrame
+        If both scatter and hist are True: returns (merged_df, scatter_plot, hist_plot).
+        If only scatter is True: returns (merged_df, scatter_plot).
+        If only hist is True: returns (merged_df, hist_plot).
+        If neither scatter nor hist is True: returns merged_df. 
+        
+    Notes
+    -----
+    - `merged_df` : DataFrame
+        The input DataFrame with added columns for burstiness parameter (BP) and memory coefficient (MC) scores.
+    - `scatter_plot` : seaborn.axisgrid.JointGrid, optional
+        JointGrid object containing the scatter plot and marginal histograms (if scatter=True).
+    - `hist_plot` : object, optional
+        Object representing the histogram plot (if hist=True).
     """
     try:
         df[time_col] = pd.to_datetime(df[time_col]) # Convert time_col to datetime
@@ -43,13 +54,23 @@ def calculate_scores(df, subject_id, time_col, scatter=False, hist=False):
         
         merged_df = pd.merge(B_score, MC_pearson, on=subject_id, how='outer')
         
+        scatter_plot = None
+        hist_plots = None
+        
         if scatter:
-            scatterplot(merged_df) #scatter plot
+            scatter_plot = scatterplot(merged_df) #scatter plot
           
         if hist:
-            histogram(merged_df, hist) #histogram
+            hist_plots = histogram(merged_df, hist) #histogram
             
-        return merged_df
+        if scatter_plot and hist_plots:
+            return merged_df, scatter_plot, hist_plots
+        elif scatter_plot:
+            return merged_df, scatter_plot
+        elif hist_plots:
+            return merged_df, hist_plots
+        else:
+            return merged_df
     
     except KeyError as e:
         print(f"Error: {e} column not found in the DataFrame.")
