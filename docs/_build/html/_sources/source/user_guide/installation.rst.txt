@@ -12,4 +12,4 @@ To install the package, use pip from PyPI:
 
 .. code-block:: bash
 
-   pip install bursty_dynamics
+   pip install burstydynamics

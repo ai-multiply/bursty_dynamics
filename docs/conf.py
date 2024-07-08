@@ -5,7 +5,7 @@
 
 import os,sys
 sys.path.insert(0, os.path.abspath('..'))  # Adjust the path as necessary
-sys.path.insert(0, os.path.abspath('../bursty_dynamics'))
+sys.path.insert(0, os.path.abspath('../burstydynamics'))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -39,11 +39,11 @@ html_css_files = [
 
 
 
-# bursty_dynamics
+# burstydynamics
 #     - .github
 #         - workflows
 #            - gh-pages.yml
-#     - bursty_dynamics
+#     - burstydynamics
 #         - __init__.py
 #         - trains.py
 #         - scores.py
@@ -55,7 +55,7 @@ html_css_files = [
 #         - source
 #             - user_guide
 #                 - index.rst
-#             - bursty_dynamics.rst
+#             - burstydynamics.rst
 #             - modules.rst
 #         - _build
 #             - html
