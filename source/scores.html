@@ -51,10 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="bursty_dynamics.html">bursty_dynamics package</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">bursty_dynamics.scores</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.scores.calculate_scores"><code class="docutils literal notranslate"><span class="pre">calculate_scores()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">bursty_dynamics.scores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trains.html">bursty_dynamics.trains</a></li>
 <li class="toctree-l2"><a class="reference internal" href="visual.html">bursty_dynamics.visual</a></li>
 </ul>
@@ -89,66 +86,6 @@
   <section id="bursty-dynamics-scores">
 <h1>bursty_dynamics.scores<a class="headerlink" href="#bursty-dynamics-scores" title="Link to this heading"></a></h1>
 <p>This module contains functions for caluclating the BP and the MC per subject id using the calculate_scores function.</p>
-<dl class="py function" id="module-bursty_dynamics.scores">
-<dt class="sig sig-object py" id="bursty_dynamics.scores.calculate_scores">
-<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.scores.</span></span><span class="sig-name descname"><span class="pre">calculate_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.scores.calculate_scores" title="Link to this definition"></a></dt>
-<dd><p>Calculate burstiness parameter and memory coefficient.</p>
-<section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
-<dl class="simple">
-<dt>df<span class="classifier">DataFrame</span></dt><dd><p>Input DataFrame.</p>
-</dd>
-<dt>subject_id<span class="classifier">str</span></dt><dd><p>Name of the column containing subject IDs.</p>
-</dd>
-<dt>time_col<span class="classifier">str</span></dt><dd><p>Name of the column containing the date.</p>
-</dd>
-<dt>scatter<span class="classifier">bool, optional</span></dt><dd><p>Whether to plot scatter plot. Default is False.</p>
-</dd>
-<dt>hist<span class="classifier">bool or str, optional</span></dt><dd><dl class="simple">
-<dt>Type of histogram to plot:</dt><dd><ul class="simple">
-<li><p>True: Plot histograms for both Burstiness Parameter (BP) and Memory Coefficient (MC).</p></li>
-<li><p>&quot;BP&quot;: Plot histogram for Burstiness Parameter only.</p></li>
-<li><p>&quot;MC&quot;: Plot histogram for Memory Coefficient only.</p></li>
-<li><p>&quot;Both&quot;: Plot histograms for both BP and MC on the same plot.</p></li>
-<li><p>False or None: Do not plot any histograms. Default is False.</p></li>
-</ul>
-</dd>
-</dl>
-</dd>
-</dl>
-</section>
-<section id="returns">
-<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
-<dl class="simple">
-<dt>tuple or DataFrame</dt><dd><p>If both scatter and hist are True: returns (merged_df, scatter_plot, hist_plot).
-If only scatter is True: returns (merged_df, scatter_plot).
-If only hist is True: returns (merged_df, hist_plot).
-If neither scatter nor hist is True: returns merged_df.</p>
-</dd>
-</dl>
-</section>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><dl class="simple">
-<dt><cite>merged_df</cite><span class="classifier">DataFrame</span></dt><dd><p>The input DataFrame with added columns for burstiness parameter (BP) and memory coefficient (MC) scores.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>scatter_plot</cite><span class="classifier">matplotlib.figure.Figure or None</span></dt><dd><p>The figure object containing the scatter plot (if scatter=True).</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>hist_plots</cite><span class="classifier">matplotlib.figure.Figure or None</span></dt><dd><p>The figure objects containing the histogram (if hist=True).</p>
-</dd>
-</dl>
-</li>
-</ul>
-</section>
-</dd></dl>
-
 <p><strong>Example Usage:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bursty_dynamics.scores</span> <span class="kn">import</span> <span class="n">calculate_scores</span>
 <span class="n">score_df</span> <span class="o">=</span> <span class="n">calculate_scores</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;eid&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span> <span class="s1">&#39;event_dt&#39;</span><span class="p">)</span>
