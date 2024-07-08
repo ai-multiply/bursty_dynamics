@@ -49,10 +49,17 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="bursty_dynamics.html">burstydynamics package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burstydynamics.html">burstydynamics package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scores.html">burstydynamics.scores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trains.html">burstydynamics.trains</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">burstydynamics.visual</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">burstydynamics.visual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.visual.event_counts"><code class="docutils literal notranslate"><span class="pre">event_counts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.visual.gridplot"><code class="docutils literal notranslate"><span class="pre">gridplot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.visual.histogram"><code class="docutils literal notranslate"><span class="pre">histogram()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.visual.scatterplot"><code class="docutils literal notranslate"><span class="pre">scatterplot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.visual.train_duration"><code class="docutils literal notranslate"><span class="pre">train_duration()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -85,6 +92,131 @@
   <section id="burstydynamics-visual">
 <h1>burstydynamics.visual<a class="headerlink" href="#burstydynamics-visual" title="Link to this heading"></a></h1>
 <p>This module contains functions for plotting the results.</p>
+<dl class="py function" id="module-burstydynamics.visual">
+<dt class="sig sig-object py" id="burstydynamics.visual.event_counts">
+<span class="sig-prename descclassname"><span class="pre">burstydynamics.visual.</span></span><span class="sig-name descname"><span class="pre">event_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.visual.event_counts" title="Link to this definition"></a></dt>
+<dd><p>Plots a count of unique events per train from the given DataFrame.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>train_info_df<span class="classifier">DataFrame</span></dt><dd><p>A DataFrame containing a column named 'unique_event_counts' which 
+holds the count of unique events (no duplicates at same time) for different entries.</p>
+</dd>
+<dt>x_limit<span class="classifier">int, optional</span></dt><dd><p>The upper limit for the x-axis. Default is 30.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>matplotlib.figure.Figure</dt><dd><p>The figure object containing the plot.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="burstydynamics.visual.gridplot">
+<span class="sig-prename descclassname"><span class="pre">burstydynamics.visual.</span></span><span class="sig-name descname"><span class="pre">gridplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(9,</span> <span class="pre">7)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.visual.gridplot" title="Link to this definition"></a></dt>
+<dd><p>Create a grid plot of Memory Coefficient (MC) vs Burstiness Parameter (BP) with a color bar.</p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>Input DataFrame containing columns 'MC' and 'BP'.</p>
+</dd>
+<dt>bins<span class="classifier">int, optional</span></dt><dd><p>Number of bins for the histogram. Default is 25.</p>
+</dd>
+<dt>lower_limit<span class="classifier">int, optional</span></dt><dd><p>Minimum value for the color scale. Values below this will be colored grey. Default is 0.</p>
+</dd>
+<dt>text_scaling<span class="classifier">float, optional</span></dt><dd><p>Scaling factor for the text in the plot. Default is 6.</p>
+</dd>
+<dt>figsize<span class="classifier">tuple, optional</span></dt><dd><p>Size of the figure. Default is (9, 7).</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>matplotlib.figure.Figure</dt><dd><p>The figure object containing the plot.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="burstydynamics.visual.histogram">
+<span class="sig-prename descclassname"><span class="pre">burstydynamics.visual.</span></span><span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.visual.histogram" title="Link to this definition"></a></dt>
+<dd><p>Plot histograms for Burstiness Parameter (BP) and Memory Coefficient (MC).</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>Input DataFrame containing columns 'BP' and 'MC'.</p>
+</dd>
+<dt>hist<span class="classifier">bool or str, optional</span></dt><dd><p>If True, plot separate histograms for 'BP' and 'MC'.
+If 'Both', plot overlapping histograms for 'BP' and 'MC'.
+If 'BP' or 'MC', plot histogram for the specified column.
+Default is True.</p>
+</dd>
+<dt>set_axis<span class="classifier">bool, optional</span></dt><dd><p>Whether to set axis limits to [-1, 1]. Default is False.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>list</dt><dd><p>List of matplotlib.figure.Figure objects containing the generated plots.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="burstydynamics.visual.scatterplot">
+<span class="sig-prename descclassname"><span class="pre">burstydynamics.visual.</span></span><span class="sig-name descname"><span class="pre">scatterplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.visual.scatterplot" title="Link to this definition"></a></dt>
+<dd><p>Create a scatter plot with marginal histograms showing the relationship between 'MC' and 'BP'.</p>
+<section id="id5">
+<h2>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>Input DataFrame containing columns 'MC' and 'BP'.</p>
+</dd>
+<dt>set_axis<span class="classifier">bool, optional</span></dt><dd><p>Whether to set axis limits to [-1, 1]. Default is False.</p>
+</dd>
+<dt>kwargs</dt><dd><p>Additional keyword arguments passed to <cite>sns.jointplot</cite>.</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h2>Returns<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>matplotlib.figure.Figure</dt><dd><p>The figure object containing the scatter plot and marginal histograms.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="burstydynamics.visual.train_duration">
+<span class="sig-prename descclassname"><span class="pre">burstydynamics.visual.</span></span><span class="sig-name descname"><span class="pre">train_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.visual.train_duration" title="Link to this definition"></a></dt>
+<dd><p>Plots a distribution of train durations in years from the given DataFrame.</p>
+<section id="id7">
+<h2>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>train_info_df<span class="classifier">DataFrame</span></dt><dd><p>A DataFrame containing a column named 'train_duration_yrs' which 
+holds the duration of training in years for different entries.</p>
+</dd>
+<dt>x_limit<span class="classifier">int, optional</span></dt><dd><p>The upper limit for the x-axis. Default is 5.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Returns<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>None</dt><dd><p>This function only displays the plot and does not return any value.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
 <p><strong>Example Usage:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gridplot</span><span class="p">(</span><span class="n">train_score</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">lower_limit</span><span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
 </pre></div>

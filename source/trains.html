@@ -50,9 +50,14 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="bursty_dynamics.html">burstydynamics package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="burstydynamics.html">burstydynamics package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scores.html">burstydynamics.scores</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">burstydynamics.trains</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">burstydynamics.trains</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.trains.train_detection"><code class="docutils literal notranslate"><span class="pre">train_detection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.trains.train_info"><code class="docutils literal notranslate"><span class="pre">train_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.trains.train_scores"><code class="docutils literal notranslate"><span class="pre">train_scores()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="visual.html">burstydynamics.visual</a></li>
 </ul>
 </li>
@@ -86,6 +91,125 @@
   <section id="burstydynamics-trains">
 <h1>burstydynamics.trains<a class="headerlink" href="#burstydynamics-trains" title="Link to this heading"></a></h1>
 <p>This module contains functions for detecting the trains, calculating the BP and MC of the trains, and also getting information of the trians.</p>
+<dl class="py function" id="module-burstydynamics.trains">
+<dt class="sig sig-object py" id="burstydynamics.trains.train_detection">
+<span class="sig-prename descclassname"><span class="pre">burstydynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'days'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_burst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_trains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.trains.train_detection" title="Link to this definition"></a></dt>
+<dd><p>Detects and assigns train IDs to events in the provided DataFrame based on the specified parameters.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>The DataFrame containing the data.</p>
+</dd>
+<dt>subject_id<span class="classifier">str</span></dt><dd><p>The column name for patient IDs.</p>
+</dd>
+<dt>time_col<span class="classifier">str</span></dt><dd><p>The column name for the datetime values.</p>
+</dd>
+<dt>max_iet<span class="classifier">int</span></dt><dd><p>Maximum distance between consecutive events in a train.</p>
+</dd>
+<dt>time_unit<span class="classifier">str, optional</span></dt><dd><p>Unit of time for the intervals ('seconds', 'minutes', 'hours', 'days', 'weeks', 'months', and 'years').
+Default is 'days'.</p>
+</dd>
+<dt>min_burst<span class="classifier">int, optional</span></dt><dd><p>Minimum number of events to form a train. Default is 3.</p>
+</dd>
+<dt>only_trains<span class="classifier">bool, optional</span></dt><dd><p>Whether to return only the events that form trains. Default is True.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>DataFrame</dt><dd><p>DataFrame with <cite>train_id</cite> included which indicates the train the events belong to.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="burstydynamics.trains.train_info">
+<span class="sig-prename descclassname"><span class="pre">burstydynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_statistic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.trains.train_info" title="Link to this definition"></a></dt>
+<dd><p>Calculate summary statistics for train data.</p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>train_df<span class="classifier">DataFrame</span></dt><dd><p>DataFrame containing train information.</p>
+</dd>
+<dt>subject_id<span class="classifier">str</span></dt><dd><p>Name of the column containing subject IDs.</p>
+</dd>
+<dt>time_col<span class="classifier">str</span></dt><dd><p>Name of the column containing timestamps.</p>
+</dd>
+<dt>summary_statistic<span class="classifier">bool, optional</span></dt><dd><p>Whether to print summary statistics. Default is False.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>DataFrame</dt><dd><p>DataFrame with calculated train information.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="burstydynamics.trains.train_scores">
+<span class="sig-prename descclassname"><span class="pre">burstydynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_event_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.trains.train_scores" title="Link to this definition"></a></dt>
+<dd><p>Calculate Burstiness Parameter (BP) and Memory Coefficient (MC) for each train_id per subject_id.</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>train_df<span class="classifier">pd.DataFrame</span></dt><dd><p>Input DataFrame.</p>
+</dd>
+<dt>subject_id<span class="classifier">str</span></dt><dd><p>Name of the column containing subject IDs.</p>
+</dd>
+<dt>time_col<span class="classifier">str</span></dt><dd><p>Name of the column containing the date.</p>
+</dd>
+<dt>min_event_n<span class="classifier">int, optional</span></dt><dd><p>Maximum IET for filtering events. Defaults to None.</p>
+</dd>
+<dt>scatter<span class="classifier">bool, optional</span></dt><dd><p>Whether to plot scatter plot. Defaults to False.</p>
+</dd>
+<dt>hist<span class="classifier">str or None, optional</span></dt><dd><p>Type of histogram to plot. Options:
+- True: Plot histograms for both BP and MC.
+- &quot;BP&quot;: Plot histogram for BP only.
+- &quot;MC&quot;: Plot histogram for MC only.
+- &quot;Both&quot;: Plot histograms for both BP and MC on the same plot.
+- False: Do not plot any histograms. Defaults to False.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>tuple or DataFrame</dt><dd><p>If both scatter and hist are True: returns (merged_df, scatter_plot, hist_plot).
+If only scatter is True: returns (merged_df, scatter_plot).
+If only hist is True: returns (merged_df, hist_plot).
+If neither scatter nor hist is True: returns merged_df.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>merged_df</cite><span class="classifier">DataFrame</span></dt><dd><p>The input DataFrame with burstiness parameter (BP) and memory coefficient (MC) for each train_id per subject_id.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>scatter_plot</cite><span class="classifier">matplotlib.figure.Figure or None</span></dt><dd><p>The figure object containing the scatter plot (if scatter=True).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>hist_plots</cite><span class="classifier">matplotlib.figure.Figure or None</span></dt><dd><p>The figure objects containing the histogram (if hist=True).</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</dd></dl>
+
 <p><strong>Example Usage:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">burstydynamics.trains</span> <span class="kn">import</span> <span class="n">train_detection</span><span class="p">,</span> <span class="n">calculate_train_info</span><span class="p">,</span> <span class="n">calculate_scores_train</span>
 <span class="n">train_df</span> <span class="o">=</span> <span class="n">train_detection</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;eid&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span> <span class="s1">&#39;event_dt&#39;</span><span class="p">,</span> <span class="n">max_iet</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">time_unit</span><span class="o">=</span><span class="s1">&#39;days&#39;</span><span class="p">,</span> <span class="n">min_burst</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>

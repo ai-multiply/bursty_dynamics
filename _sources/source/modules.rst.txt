@@ -6,7 +6,7 @@ burstydynamics
 .. toctree::
    :maxdepth: 4
 
-   bursty_dynamics
+   burstydynamics
    scores
    trains
    visual
