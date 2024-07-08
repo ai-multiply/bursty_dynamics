@@ -1,6 +1,20 @@
+Metadata-Version: 2.1
+Name: bursty-dynamics
+Version: 0.0.2
+Summary: Bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
+Home-page: https://github.com/ai-multiply/bursty_dynamics
+Author: AI-Multiply
+Author-email: alisha.angdembe1@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
 # Bursty dynamics
 
-burstydynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
+Bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
 
 credit: 
 This package implements the alternate burstiness parameter described in the paper ‘Measuring Burstiness for Finite Event Sequences’ by Kim, Eun-Kyeong, and Hang-Hyun Jo, and memeory coefficient described in ‘Burstiness and Memory in Complex Systems’ by Goh, K.-I., and A.-L. Barabási. 
@@ -16,17 +30,17 @@ This package implements the alternate burstiness parameter described in the pape
 
 ## Installation
 
-You can install the burstydynamics via pip:
+You can install the bursty_dynamic via pip:
 ```sh
-pip install burstydynamics
+pip install bursty_dynamics
 ```
 
 ## Usage
 Here's a quick overview of how to use the main functionalities of the package:
 
 ```sh
-from burstydynamics.scores import calculate_scores
-from burstydynamics.trains import train_detection, calculate_train_info, calculate_scores_train
+from bursty_dynamics.scores import calculate_scores
+from bursty_dynamics.trains import train_detection, calculate_train_info, calculate_scores_train
 
 # Load your longitudinal data into a DataFrame
 # df = load_data()
@@ -44,6 +58,8 @@ bursty_dynamics is licensed under the MIT License. See the LICENSE file for more
 
 ## Contributing
 Contributions are welcome! If you encounter any issues or have suggestions for improvements, feel free to open an issue or submit a pull request on GitHub.
+
+
 
 
 
