@@ -6,7 +6,7 @@ Module contents
 ---------------
 This section provides an overview of the main `burstydynamics` package and its contents.
 
-.. automodule:: bursty_dynamics
+.. automodule:: burstydynamics
    :members:
    :undoc-members:
    :show-inheritance:
