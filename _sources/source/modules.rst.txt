@@ -1,6 +1,6 @@
 .. _modules:
 
-bursty_dynamics
+burstydynamics
 ===============
 
 .. toctree::
