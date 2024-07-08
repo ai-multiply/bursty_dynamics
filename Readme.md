@@ -1,23 +1,18 @@
 # Bursty dynamics
 
-Bursty dynamics is a package designed to identify bursts of activity in longitudinal data/ (focus on EHR). It offers functionality to calculate burstiness parameters, memeory coefficient, detect trains of events in close temporal proximity to each other, and also calculate the burstiness parameter and memory coefficient of the trains. 
+Bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
 
 credit: 
-This package implements the alternate burst parameter described in the paper ‘Measuring Burstiness for Finite Event Sequences’ by Kim, Eun-Kyeong, and Hang-Hyun Jo, and memeory coefficient described in ‘Burstiness and Memory in Complex Systems’ by Goh, K.-I., and A.-L. Barabási. 
-
-credit for train?
-
-
-other papers of influence:
-
+This package implements the alternate burstiness parameter described in the paper ‘Measuring Burstiness for Finite Event Sequences’ by Kim, Eun-Kyeong, and Hang-Hyun Jo, and memeory coefficient described in ‘Burstiness and Memory in Complex Systems’ by Goh, K.-I., and A.-L. Barabási. 
 
 
 ## Features
 
-- Burst Parameter Calculation: Calculate burst parameters to quantify the intensity and frequency of bursts within longitudinal data. 
-- Memory Coefficient Computation: Compute memory coefficients to assess the persistence of burst patterns over time.
-- Train Detection: Identify clusters of events occurring in close temporal proximity.
-- Train information
+- Burstiness Parameter (BP) and Memory Coefficient (MC) Calculation: Calculate BP and MC to quantify the irregularity and memory effects of event timing within longitudinal data.
+- Event Train Detection: Detect and label event trains based on user-defined criteria such as maximum inter-event time and minimum burst size.
+- Train-Level Analysis: Analyse BP and MC for detected event trains, providing insights into temporal patterns within clusters of events.
+- Visualization Tools: Visualise temporal patterns with scatter plots, histograms, kernel density estimates (KDE), and more, facilitating interpretation of analysis results.
+- User-Friendly Interface: Designed for ease of use, with clear function parameters and output formats, making it accessible to both novice and experienced users.
 
 ## Installation
 
@@ -44,7 +39,8 @@ For more example of usage, please take a look at examples.ipynb in the example f
 
 ## License
 
-`bursty_dynamics` was created by AI-Multiply in Queen Mary University of London. 
+bursty_dynamics is licensed under the MIT License. See the LICENSE file for more details.
+
 
 ## Contributing
 Contributions are welcome! If you encounter any issues or have suggestions for improvements, feel free to open an issue or submit a pull request on GitHub.

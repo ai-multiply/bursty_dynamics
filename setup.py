@@ -4,7 +4,7 @@ with open("Readme.md", "r") as d:
     long_description = d.read()
 
 VERSION = '0.0.1' 
-DESCRIPTION = 'Identifier of temporal patterns in longitudinal helath data.'
+DESCRIPTION = 'Bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.'
 
     
 setup(
@@ -18,7 +18,7 @@ setup(
     url = "https://github.com/ai-multiply/bursty_dynamics",
     author = "AI-Multiply",
     author_email = "alisha.angdembe1@gmail.com",
-    # licence = "MIT",
+    licence = "MIT",
     classifiers = ["Programming Language :: Python :: 3"],
     python_requires='>=3.6',
     install_requires = ['numpy','pandas', 'seaborn','matplotlib','scipy' ]
