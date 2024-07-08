@@ -1,12 +1,12 @@
 .. _modules:
 
-burstydynamics
+bursty_dynamics
 ===============
 
 .. toctree::
    :maxdepth: 4
 
-   burstydynamics
+   bursty_dynamics
    scores
    trains
    visual

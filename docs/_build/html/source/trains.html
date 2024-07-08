@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>burstydynamics.trains &mdash; Bursty Dynamics 0.1 documentation</title>
+  <title>bursty_dynamics.trains &mdash; Bursty Dynamics 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
@@ -24,8 +24,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="burstydynamics.visual" href="visual.html" />
-    <link rel="prev" title="burstydynamics.scores" href="scores.html" /> 
+    <link rel="next" title="bursty_dynamics.visual" href="visual.html" />
+    <link rel="prev" title="bursty_dynamics.scores" href="scores.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,14 +50,15 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="scores.html">burstydynamics.scores</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">burstydynamics.trains</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.trains.train_detection"><code class="docutils literal notranslate"><span class="pre">train_detection()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.trains.train_info"><code class="docutils literal notranslate"><span class="pre">train_info()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.trains.train_scores"><code class="docutils literal notranslate"><span class="pre">train_scores()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bursty_dynamics.html">bursty_dynamics package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scores.html">bursty_dynamics.scores</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">bursty_dynamics.trains</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.trains.train_detection"><code class="docutils literal notranslate"><span class="pre">train_detection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.trains.train_info"><code class="docutils literal notranslate"><span class="pre">train_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.trains.train_scores"><code class="docutils literal notranslate"><span class="pre">train_scores()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="visual.html">burstydynamics.visual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visual.html">bursty_dynamics.visual</a></li>
 </ul>
 </li>
 </ul>
@@ -76,8 +77,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">burstydynamics</a></li>
-      <li class="breadcrumb-item active">burstydynamics.trains</li>
+          <li class="breadcrumb-item"><a href="modules.html">bursty_dynamics</a></li>
+      <li class="breadcrumb-item active">bursty_dynamics.trains</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/source/trains.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -87,12 +88,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="burstydynamics-trains">
-<h1>burstydynamics.trains<a class="headerlink" href="#burstydynamics-trains" title="Link to this heading"></a></h1>
+  <section id="bursty-dynamics-trains">
+<h1>bursty_dynamics.trains<a class="headerlink" href="#bursty-dynamics-trains" title="Link to this heading"></a></h1>
 <p>This module contains functions for detecting the trains, calculating the BP and MC of the trains, and also getting information of the trians.</p>
-<dl class="py function" id="module-burstydynamics.trains">
-<dt class="sig sig-object py" id="burstydynamics.trains.train_detection">
-<span class="sig-prename descclassname"><span class="pre">burstydynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'days'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_burst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_trains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.trains.train_detection" title="Link to this definition"></a></dt>
+<dl class="py function" id="module-bursty_dynamics.trains">
+<dt class="sig sig-object py" id="bursty_dynamics.trains.train_detection">
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'days'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_burst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_trains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.trains.train_detection" title="Link to this definition"></a></dt>
 <dd><p>Detects and assigns train IDs to events in the provided DataFrame based on the specified parameters.</p>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
@@ -126,8 +127,8 @@ Default is 'days'.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="burstydynamics.trains.train_info">
-<span class="sig-prename descclassname"><span class="pre">burstydynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_statistic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.trains.train_info" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="bursty_dynamics.trains.train_info">
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_statistic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.trains.train_info" title="Link to this definition"></a></dt>
 <dd><p>Calculate summary statistics for train data.</p>
 <section id="id1">
 <h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
@@ -152,8 +153,8 @@ Default is 'days'.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="burstydynamics.trains.train_scores">
-<span class="sig-prename descclassname"><span class="pre">burstydynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_event_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.trains.train_scores" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="bursty_dynamics.trains.train_scores">
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_event_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.trains.train_scores" title="Link to this definition"></a></dt>
 <dd><p>Calculate Burstiness Parameter (BP) and Memory Coefficient (MC) for each train_id per subject_id.</p>
 <section id="id3">
 <h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
@@ -210,7 +211,7 @@ If neither scatter nor hist is True: returns merged_df.</p>
 </dd></dl>
 
 <p><strong>Example Usage:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">burstydynamics.trains</span> <span class="kn">import</span> <span class="n">train_detection</span><span class="p">,</span> <span class="n">calculate_train_info</span><span class="p">,</span> <span class="n">calculate_scores_train</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bursty_dynamics.trains</span> <span class="kn">import</span> <span class="n">train_detection</span><span class="p">,</span> <span class="n">calculate_train_info</span><span class="p">,</span> <span class="n">calculate_scores_train</span>
 <span class="n">train_df</span> <span class="o">=</span> <span class="n">train_detection</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;eid&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span> <span class="s1">&#39;event_dt&#39;</span><span class="p">,</span> <span class="n">max_iet</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">time_unit</span><span class="o">=</span><span class="s1">&#39;days&#39;</span><span class="p">,</span> <span class="n">min_burst</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">train_info</span> <span class="o">=</span> <span class="n">calculate_train_info</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;eid&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span> <span class="s1">&#39;event_dt&#39;</span><span class="p">,</span> <span class="n">summary_statistic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">train_score</span> <span class="o">=</span> <span class="n">calculate_scores_train</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;eid&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span><span class="s1">&#39;event_dt&#39;</span><span class="p">,</span> <span class="n">min_event_n</span><span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
@@ -222,8 +223,8 @@ If neither scatter nor hist is True: returns merged_df.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="scores.html" class="btn btn-neutral float-left" title="burstydynamics.scores" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="visual.html" class="btn btn-neutral float-right" title="burstydynamics.visual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="scores.html" class="btn btn-neutral float-left" title="bursty_dynamics.scores" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="visual.html" class="btn btn-neutral float-right" title="bursty_dynamics.visual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

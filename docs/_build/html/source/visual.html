@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>burstydynamics.visual &mdash; Bursty Dynamics 0.1 documentation</title>
+  <title>bursty_dynamics.visual &mdash; Bursty Dynamics 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="burstydynamics.trains" href="trains.html" /> 
+    <link rel="prev" title="bursty_dynamics.trains" href="trains.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,14 +49,15 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="scores.html">burstydynamics.scores</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trains.html">burstydynamics.trains</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">burstydynamics.visual</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.visual.event_counts"><code class="docutils literal notranslate"><span class="pre">event_counts()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.visual.gridplot"><code class="docutils literal notranslate"><span class="pre">gridplot()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.visual.histogram"><code class="docutils literal notranslate"><span class="pre">histogram()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.visual.scatterplot"><code class="docutils literal notranslate"><span class="pre">scatterplot()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#burstydynamics.visual.train_duration"><code class="docutils literal notranslate"><span class="pre">train_duration()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bursty_dynamics.html">bursty_dynamics package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scores.html">bursty_dynamics.scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trains.html">bursty_dynamics.trains</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">bursty_dynamics.visual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.visual.event_counts"><code class="docutils literal notranslate"><span class="pre">event_counts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.visual.gridplot"><code class="docutils literal notranslate"><span class="pre">gridplot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.visual.histogram"><code class="docutils literal notranslate"><span class="pre">histogram()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.visual.scatterplot"><code class="docutils literal notranslate"><span class="pre">scatterplot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.visual.train_duration"><code class="docutils literal notranslate"><span class="pre">train_duration()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -77,8 +78,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">burstydynamics</a></li>
-      <li class="breadcrumb-item active">burstydynamics.visual</li>
+          <li class="breadcrumb-item"><a href="modules.html">bursty_dynamics</a></li>
+      <li class="breadcrumb-item active">bursty_dynamics.visual</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/source/visual.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -88,12 +89,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="burstydynamics-visual">
-<h1>burstydynamics.visual<a class="headerlink" href="#burstydynamics-visual" title="Link to this heading"></a></h1>
+  <section id="bursty-dynamics-visual">
+<h1>bursty_dynamics.visual<a class="headerlink" href="#bursty-dynamics-visual" title="Link to this heading"></a></h1>
 <p>This module contains functions for plotting the results.</p>
-<dl class="py function" id="module-burstydynamics.visual">
-<dt class="sig sig-object py" id="burstydynamics.visual.event_counts">
-<span class="sig-prename descclassname"><span class="pre">burstydynamics.visual.</span></span><span class="sig-name descname"><span class="pre">event_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.visual.event_counts" title="Link to this definition"></a></dt>
+<dl class="py function" id="module-bursty_dynamics.visual">
+<dt class="sig sig-object py" id="bursty_dynamics.visual.event_counts">
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">event_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.event_counts" title="Link to this definition"></a></dt>
 <dd><p>Plots a count of unique events per train from the given DataFrame.</p>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
@@ -115,8 +116,8 @@ holds the count of unique events (no duplicates at same time) for different entr
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="burstydynamics.visual.gridplot">
-<span class="sig-prename descclassname"><span class="pre">burstydynamics.visual.</span></span><span class="sig-name descname"><span class="pre">gridplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(9,</span> <span class="pre">7)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.visual.gridplot" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="bursty_dynamics.visual.gridplot">
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">gridplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(9,</span> <span class="pre">7)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.gridplot" title="Link to this definition"></a></dt>
 <dd><p>Create a grid plot of Memory Coefficient (MC) vs Burstiness Parameter (BP) with a color bar.</p>
 <section id="id1">
 <h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
@@ -143,8 +144,8 @@ holds the count of unique events (no duplicates at same time) for different entr
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="burstydynamics.visual.histogram">
-<span class="sig-prename descclassname"><span class="pre">burstydynamics.visual.</span></span><span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.visual.histogram" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="bursty_dynamics.visual.histogram">
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.histogram" title="Link to this definition"></a></dt>
 <dd><p>Plot histograms for Burstiness Parameter (BP) and Memory Coefficient (MC).</p>
 <section id="id3">
 <h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
@@ -170,8 +171,8 @@ Default is True.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="burstydynamics.visual.scatterplot">
-<span class="sig-prename descclassname"><span class="pre">burstydynamics.visual.</span></span><span class="sig-name descname"><span class="pre">scatterplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.visual.scatterplot" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="bursty_dynamics.visual.scatterplot">
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">scatterplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.scatterplot" title="Link to this definition"></a></dt>
 <dd><p>Create a scatter plot with marginal histograms showing the relationship between 'MC' and 'BP'.</p>
 <section id="id5">
 <h2>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
@@ -194,8 +195,8 @@ Default is True.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="burstydynamics.visual.train_duration">
-<span class="sig-prename descclassname"><span class="pre">burstydynamics.visual.</span></span><span class="sig-name descname"><span class="pre">train_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#burstydynamics.visual.train_duration" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="bursty_dynamics.visual.train_duration">
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">train_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.train_duration" title="Link to this definition"></a></dt>
 <dd><p>Plots a distribution of train durations in years from the given DataFrame.</p>
 <section id="id7">
 <h2>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
@@ -226,7 +227,7 @@ holds the duration of training in years for different entries.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="trains.html" class="btn btn-neutral float-left" title="burstydynamics.trains" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="trains.html" class="btn btn-neutral float-left" title="bursty_dynamics.trains" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

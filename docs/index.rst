@@ -1,4 +1,4 @@
-.. burstydynamics documentation master file, created by
+.. bursty_dynamics documentation master file, created by
    sphinx-quickstart on Tue May 21 17:15:47 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -18,10 +18,10 @@ Bursty Dynamics documentation
 
  
 **links**: 
-`Example notebook <https://github.com/ai-multiply/burstydynamics/blob/main/example/examples.ipynb>`_
+`Example notebook <https://github.com/ai-multiply/bursty_dynamics/blob/main/example/examples.ipynb>`_
 
 
-burstydynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results. This documentation provides a comprehensive guide on how to use the package.
+bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results. This documentation provides a comprehensive guide on how to use the package.
 
 .. image:: _static/images/pic2.png
    :scale: 40 %
@@ -36,7 +36,7 @@ burstydynamics is a Python package designed to facilitate the analysis of tempor
         User guide
         ^^^
 
-        Provides information on how to get started with burstydynamics.
+        Provides information on how to get started with bursty_dynamics.
 
         +++
 
@@ -53,7 +53,7 @@ burstydynamics is a Python package designed to facilitate the analysis of tempor
       API Reference
       ^^^
 
-      Detailed description of the functions and modules in burstydynamics.
+      Detailed description of the functions and modules in bursty_dynamics.
 
       +++
 

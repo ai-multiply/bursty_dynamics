@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: bursty-dynamics
 Version: 0.0.2
-Summary: Bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
-Home-page: https://github.com/ai-multiply/bursty_dynamics
+Summary: burstydynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
+Home-page: https://github.com/ai-multiply/burstydynamics
 Author: AI-Multiply
 Author-email: alisha.angdembe1@gmail.com
 License: MIT
@@ -14,7 +14,7 @@ License-File: LICENSE.txt
 
 # Bursty dynamics
 
-Bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
+burstydynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
 
 credit: 
 This package implements the alternate burstiness parameter described in the paper ‘Measuring Burstiness for Finite Event Sequences’ by Kim, Eun-Kyeong, and Hang-Hyun Jo, and memeory coefficient described in ‘Burstiness and Memory in Complex Systems’ by Goh, K.-I., and A.-L. Barabási. 
@@ -30,17 +30,17 @@ This package implements the alternate burstiness parameter described in the pape
 
 ## Installation
 
-You can install the bursty_dynamic via pip:
+You can install the burstydynamics via pip:
 ```sh
-pip install bursty_dynamics
+pip install burstydynamics
 ```
 
 ## Usage
 Here's a quick overview of how to use the main functionalities of the package:
 
 ```sh
-from bursty_dynamics.scores import calculate_scores
-from bursty_dynamics.trains import train_detection, calculate_train_info, calculate_scores_train
+from burstydynamics.scores import calculate_scores
+from burstydynamics.trains import train_detection, calculate_train_info, calculate_scores_train
 
 # Load your longitudinal data into a DataFrame
 # df = load_data()
