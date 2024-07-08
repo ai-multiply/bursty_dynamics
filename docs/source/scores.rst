@@ -1,9 +1,9 @@
-bursty_dynamics.scores
+burstydynamics.scores
 ======================
 
 This module contains functions for caluclating the BP and the MC per subject id using the calculate_scores function. 
 
-.. automodule:: bursty_dynamics.scores
+.. automodule:: burstydynamics.scores
    :members:
    :undoc-members:
    :show-inheritance:
@@ -12,5 +12,5 @@ This module contains functions for caluclating the BP and the MC per subject id 
 
 .. code-block:: python
 
-   from bursty_dynamics.scores import calculate_scores
+   from burstydynamics.scores import calculate_scores
    score_df = calculate_scores(df, subject_id = 'eid', time_col = 'event_dt')
