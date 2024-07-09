@@ -18,7 +18,7 @@ Bursty Dynamics documentation
 
 
 **Quick links**: 
-`Example notebook <https://github.com/ai-multiply/bursty_dynamics/blob/main/example/examples.ipynb>`_ | `Installation <source/user_guide/installation.rst>`_ | `What is Bursty Dynamics? <source/user_guide/whatisbd.rst>`_
+`Example notebook <https://github.com/ai-multiply/bursty_dynamics/blob/main/example/examples.ipynb>`_ | `Installation <source/user_guide/installation>`_ | `What is Bursty Dynamics? <source/user_guide/whatisbd>`_
 
 
 
