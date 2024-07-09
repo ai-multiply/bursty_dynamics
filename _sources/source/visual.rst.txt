@@ -12,6 +12,7 @@ This module contains functions for plotting the results.
 
 .. code-block:: python
 
-    gridplot(train_score, bins=25, lower_limit= 1000)
+    gplot = gridplot(train_score_df, bins=25, lower_limit=100)
+    
     
     

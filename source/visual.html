@@ -113,6 +113,11 @@ holds the count of unique events (no duplicates at same time) for different entr
 </dd>
 </dl>
 </section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>Here is an example plot of the function:</p>
+<a class="reference internal image-reference" href="../_images/event_counts.png"><img alt="Example Plot" class="align-center" src="../_images/event_counts.png" style="width: 496.8px; height: 321.6px;" /></a>
+</section>
 </dd></dl>
 
 <dl class="py function">
@@ -141,14 +146,19 @@ holds the count of unique events (no duplicates at same time) for different entr
 </dd>
 </dl>
 </section>
+<section id="id3">
+<h2>Example<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>Here is an example plot of the function:</p>
+<a class="reference internal image-reference" href="../_images/grid.png"><img alt="Example Plot" class="align-center" src="../_images/grid.png" style="width: 532.8000000000001px; height: 414.40000000000003px;" /></a>
+</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bursty_dynamics.visual.histogram">
 <span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.histogram" title="Link to this definition"></a></dt>
 <dd><p>Plot histograms for Burstiness Parameter (BP) and Memory Coefficient (MC).</p>
-<section id="id3">
-<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>Parameters<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>df<span class="classifier">DataFrame</span></dt><dd><p>Input DataFrame containing columns 'BP' and 'MC'.</p>
 </dd>
@@ -161,12 +171,17 @@ Default is True.</p>
 </dd>
 </dl>
 </section>
-<section id="id4">
-<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>Returns<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>list</dt><dd><p>List of matplotlib.figure.Figure objects containing the generated plots.</p>
 </dd>
 </dl>
+</section>
+<section id="id6">
+<h2>Example<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>Here is an example plot of the function:</p>
+<a class="reference internal image-reference" href="../_images/histo.png"><img alt="Example Plot" class="align-center" src="../_images/histo.png" style="width: 537.6px; height: 396.0px;" /></a>
 </section>
 </dd></dl>
 
@@ -174,8 +189,8 @@ Default is True.</p>
 <dt class="sig sig-object py" id="bursty_dynamics.visual.scatterplot">
 <span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">scatterplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.scatterplot" title="Link to this definition"></a></dt>
 <dd><p>Create a scatter plot with marginal histograms showing the relationship between 'MC' and 'BP'.</p>
-<section id="id5">
-<h2>Parameters<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="id7">
+<h2>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>df<span class="classifier">DataFrame</span></dt><dd><p>Input DataFrame containing columns 'MC' and 'BP'.</p>
 </dd>
@@ -185,12 +200,17 @@ Default is True.</p>
 </dd>
 </dl>
 </section>
-<section id="id6">
-<h2>Returns<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<section id="id8">
+<h2>Returns<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>matplotlib.figure.Figure</dt><dd><p>The figure object containing the scatter plot and marginal histograms.</p>
 </dd>
 </dl>
+</section>
+<section id="id9">
+<h2>Example<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<p>Here is an example plot of the function:</p>
+<a class="reference internal image-reference" href="../_images/scatter.png"><img alt="Example Plot" class="align-center" src="../_images/scatter.png" style="width: 598.4px; height: 443.20000000000005px;" /></a>
 </section>
 </dd></dl>
 
@@ -198,8 +218,8 @@ Default is True.</p>
 <dt class="sig sig-object py" id="bursty_dynamics.visual.train_duration">
 <span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">train_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.train_duration" title="Link to this definition"></a></dt>
 <dd><p>Plots a distribution of train durations in years from the given DataFrame.</p>
-<section id="id7">
-<h2>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id10">
+<h2>Parameters<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>train_info_df<span class="classifier">DataFrame</span></dt><dd><p>A DataFrame containing a column named 'train_duration_yrs' which 
 holds the duration of training in years for different entries.</p>
@@ -208,17 +228,22 @@ holds the duration of training in years for different entries.</p>
 </dd>
 </dl>
 </section>
-<section id="id8">
-<h2>Returns<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id11">
+<h2>Returns<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>None</dt><dd><p>This function only displays the plot and does not return any value.</p>
 </dd>
 </dl>
 </section>
+<section id="id12">
+<h2>Example<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<p>Here is an example plot of the function:</p>
+<a class="reference internal image-reference" href="../_images/train_duration.png"><img alt="Example Plot" class="align-center" src="../_images/train_duration.png" style="width: 560.0px; height: 412.8px;" /></a>
+</section>
 </dd></dl>
 
 <p><strong>Example Usage:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gridplot</span><span class="p">(</span><span class="n">train_score</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">lower_limit</span><span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gplot</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">(</span><span class="n">train_score_df</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">lower_limit</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
