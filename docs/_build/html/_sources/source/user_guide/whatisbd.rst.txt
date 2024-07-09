@@ -39,3 +39,10 @@ The score ranges between -1 and 1, where a score closer to -1 indicates more reg
 
 .. image:: ../../_static/images/equation2.png
    :scale: 50 %
+   
+   
+   
+References
+==========
+- Goh, K., & Barabási, A. (2008). Burstiness and memory in complex systems. Europhysics Letters, 81(4), 48002. https://doi.org/10.1209/0295-5075/81/48002
+- Kim, E., & Jo, H. (2016). Measuring burstiness for finite event sequences. Physical Review. E, 94(3). https://doi.org/10.1103/physreve.94.032311
