@@ -38,24 +38,3 @@ html_css_files = [
 ]
 
 
-
-# bursty_dynamics
-#     - .github
-#         - workflows
-#            - gh-pages.yml
-#     - bursty_dynamics
-#         - __init__.py
-#         - trains.py
-#         - scores.py
-#         - visuals.py
-#     - setup.py
-#     - docs
-#         - conf.py
-#         - index.rst
-#         - source
-#             - user_guide
-#                 - index.rst
-#             - bursty_dynamics.rst
-#             - modules.rst
-#         - _build
-#             - html

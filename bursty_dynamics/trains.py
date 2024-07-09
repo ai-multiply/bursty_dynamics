@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-from shared_function import *
-from visual import *
+from .shared_function import *
+from .visual import *
 
 import seaborn as sns
 import matplotlib.pyplot as plt

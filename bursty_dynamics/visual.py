@@ -22,6 +22,16 @@ def gridplot(df, bins=25, lower_limit=0, text_scaling=6, figsize=(9, 7), **kwarg
     -------
     matplotlib.figure.Figure
         The figure object containing the plot.
+        
+    Example
+    -------
+    Here is an example plot of the function:
+
+    .. image:: /_static/images/grid.png
+       :alt: Example Plot
+       :align: center
+       :scale: 40%
+
     """
     plt.figure(figsize=figsize)
     cmap = plt.cm.viridis
@@ -58,6 +68,16 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
     -------
     list
         List of matplotlib.figure.Figure objects containing the generated plots.
+        
+    Example
+    -------
+    Here is an example plot of the function:
+
+    .. image:: /_static/images/histo.png
+       :alt: Example Plot
+       :align: center
+       :scale: 40%
+       
     """
     sns.set_theme(rc={'figure.figsize': (9, 7)}, style='white')
 
@@ -118,6 +138,16 @@ def scatterplot(df, set_axis=False, **kwargs):
     -------
     matplotlib.figure.Figure
         The figure object containing the scatter plot and marginal histograms.
+        
+    Example
+    -------
+    Here is an example plot of the function:
+
+    .. image:: /_static/images/scatter.png
+       :alt: Example Plot
+       :align: center
+       :scale: 40%
+       
     """
     sns.set_theme(style='white')
     plot= sns.jointplot(data=df, x="MC", y="BP", kind="reg", scatter_kws=dict(alpha=0.3, color='blue'),  line_kws=dict(color='black', linewidth=1),
@@ -147,6 +177,16 @@ def train_duration(train_info_df, x_limit=5, **kwargs):
     -------
     None
         This function only displays the plot and does not return any value.
+        
+    Example
+    -------
+    Here is an example plot of the function:
+
+    .. image:: /_static/images/train_duration.png
+       :alt: Example Plot
+       :align: center
+       :scale: 40%
+       
     """
     fig, ax = plt.subplots()
     sns.histplot(train_info_df["train_duration_yrs"], kde=True, 
@@ -174,6 +214,16 @@ def event_counts(train_info_df, x_limit=30, **kwargs):
     -------
     matplotlib.figure.Figure
         The figure object containing the plot.
+        
+    Example
+    -------
+    Here is an example plot of the function:
+
+    .. image:: /_static/images/event_counts.png
+       :alt: Example Plot
+       :align: center
+       :scale: 40%
+       
     """
     fig, ax = plt.subplots(figsize=(8, 5))
     sns.countplot(data=train_info_df[train_info_df["unique_event_counts"] <= x_limit], 
