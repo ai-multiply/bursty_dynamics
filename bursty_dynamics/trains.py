@@ -37,10 +37,20 @@ def train_detection(df, subject_id, time_col, max_iet, time_unit='days', min_bur
     if df.empty:
         raise ValueError("Input DataFrame is empty")
         
+    # Check if the required columns are in the DataFrame
+    if subject_id not in df.columns:
+        print(f"Error: '{subject_id}' column not found in the DataFrame.")
+        return
+    if time_col not in df.columns:
+        print(f"Error: '{time_col}' column not found in the DataFrame.")
+        return
+    
     try:
+        # Convert time_col to datetime
         df[time_col] = pd.to_datetime(df[time_col])
-    except ValueError:
-        raise ValueError("Conversion of {} to datetime failed".format(time_col))
+    except Exception as e:
+        print(f"Error converting '{time_col}' to datetime: {e}")
+        return
         
     df = df.sort_values([subject_id, time_col]).copy()
     train_df = df.assign(train_id=df.groupby(subject_id)[time_col].transform(lambda x: find_bursts(x.values, max_iet, time_unit, min_burst)))
@@ -70,6 +80,15 @@ def train_info(train_df, subject_id, time_col, summary_statistic=None):
     DataFrame
         DataFrame with calculated train information.
     """
+    
+    # Check if the required columns are in the DataFrame
+    if subject_id not in df.columns:
+        print(f"Error: '{subject_id}' column not found in the DataFrame.")
+        return
+    if time_col not in df.columns:
+        print(f"Error: '{time_col}' column not found in the DataFrame.")
+        return
+    
     df_updated = remove_duplicate_events(train_df, subject_id, time_col)
     
     eventcounts = df_updated.groupby([subject_id, "train_id"]).size().reset_index(name='unique_event_counts') # Count unique events per patient and train_id
@@ -142,9 +161,20 @@ def train_scores(train_df, subject_id, time_col, min_event_n=None, scatter=False
         The figure objects containing the histogram (if hist=True).
         
     """
-        
-    # Convert the time column to datetime
-    train_df[time_col] = pd.to_datetime(train_df[time_col])
+    # Check if the required columns are in the DataFrame
+    if subject_id not in df.columns:
+        print(f"Error: '{subject_id}' column not found in the DataFrame.")
+        return
+    if time_col not in df.columns:
+        print(f"Error: '{time_col}' column not found in the DataFrame.")
+        return
+    
+    try:
+        # Convert time_col to datetime
+        train_df[time_col] = pd.to_datetime(train_df[time_col])
+    except Exception as e:
+        print(f"Error converting '{time_col}' to datetime: {e}")
+        return
 
     # Remove duplicate events for each subject on the same day
     train_df_updated = remove_duplicate_events(train_df, subject_id, time_col)

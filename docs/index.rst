@@ -34,7 +34,7 @@ Bursty Dynamics is a Python package designed to facilitate the analysis of tempo
         User guide
         ^^^
 
-        Provides information on how to get started with bursty_dynamics.
+        Provides information on how to get started with Bursty Dynamics.
 
         +++
 
@@ -51,7 +51,7 @@ Bursty Dynamics is a Python package designed to facilitate the analysis of tempo
       API Reference
       ^^^
 
-      Detailed description of the functions and modules in bursty_dynamics.
+      Detailed description of the functions and modules in Bursty Dynamics.
 
       +++
 
