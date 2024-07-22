@@ -91,7 +91,7 @@
 <p>This module contains functions for caluclating the BP and the MC per subject id using the calculate_scores function.</p>
 <dl class="py function" id="module-bursty_dynamics.scores">
 <dt class="sig sig-object py" id="bursty_dynamics.scores.calculate_scores">
-<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.scores.</span></span><span class="sig-name descname"><span class="pre">calculate_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.scores.calculate_scores" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.scores.</span></span><span class="sig-name descname"><span class="pre">calculate_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.scores.calculate_scores" title="Link to this definition"></a></dt>
 <dd><p>Calculate burstiness parameter and memory coefficient.</p>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
@@ -150,11 +150,6 @@ If neither scatter nor hist is True: returns merged_df.</p>
 </section>
 </dd></dl>
 
-<p><strong>Example Usage:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bursty_dynamics.scores</span> <span class="kn">import</span> <span class="n">calculate_scores</span>
-<span class="n">score_df</span> <span class="o">=</span> <span class="n">calculate_scores</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;eid&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span> <span class="s1">&#39;event_dt&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
 
 

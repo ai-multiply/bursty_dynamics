@@ -5,8 +5,8 @@ What is Bursty Dynamics?
 ************************
 
 Bursty Dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
-An event is a record with time. 
-A train is a cluster of events that occur closer to eachother. 
+An event is a timestamped record in the data. 
+A train is a cluster of events that occur in close temporal proximity to each other. 
 
 Key Features
 ------------
@@ -37,8 +37,6 @@ Burstiness parameter is a quantitative measure of the irregularity of events occ
 
 The score ranges between -1 and 1, where a score closer to -1 indicates more regular intervals between events, a score near 0 suggests a random distribution of events, and a value score to 1 indicates a more severe burst pattern, when σ→∞, characterized by rapid, intense occurrences of events. This score is crucial in differentiating between regular, random, and bursty time series. We use the measure, burstiness parameter A, defined by (Kim and Jo, 2016) as an extension of (Goh and Barabasi, 2008) that accounts for the varying length of events. 
 
-.. image:: ../../_static/images/pic1.png
-   :scale: 50 %
 
    
 What is Memory Coefficient?

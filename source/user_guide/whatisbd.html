@@ -94,8 +94,8 @@
   <section id="what-is-bursty-dynamics">
 <span id="whatisbd"></span><h1>What is Bursty Dynamics?<a class="headerlink" href="#what-is-bursty-dynamics" title="Link to this heading"></a></h1>
 <p>Bursty Dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
-An event is a record with time.
-A train is a cluster of events that occur closer to eachother.</p>
+An event is a timestamped record in the data.
+A train is a cluster of events that occur in close temporal proximity to each other.</p>
 <section id="key-features">
 <h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading"></a></h2>
 <ul class="simple">
@@ -115,7 +115,6 @@ Designed for ease of use, with clear function parameters and output formats, mak
 <p>Burstiness parameter is a quantitative measure of the irregularity of events occurring over time. The burstiness parameter is measured using the mean (μ) and standard deviation (σ) of the inter-event time distribution as shown in the equation below.</p>
 <a class="reference internal image-reference" href="../../_images/equation1.png"><img alt="../../_images/equation1.png" src="../../_images/equation1.png" style="width: 384.0px; height: 75.0px;" /></a>
 <p>The score ranges between -1 and 1, where a score closer to -1 indicates more regular intervals between events, a score near 0 suggests a random distribution of events, and a value score to 1 indicates a more severe burst pattern, when σ→∞, characterized by rapid, intense occurrences of events. This score is crucial in differentiating between regular, random, and bursty time series. We use the measure, burstiness parameter A, defined by (Kim and Jo, 2016) as an extension of (Goh and Barabasi, 2008) that accounts for the varying length of events.</p>
-<a class="reference internal image-reference" href="../../_images/pic1.png"><img alt="../../_images/pic1.png" src="../../_images/pic1.png" style="width: 438.0px; height: 343.0px;" /></a>
 </section>
 <section id="what-is-memory-coefficient">
 <h3>What is Memory Coefficient?<a class="headerlink" href="#what-is-memory-coefficient" title="Link to this heading"></a></h3>
