@@ -301,7 +301,7 @@ def event_counts(train_info_df, x_limit=30, hue=None, **kwargs):
     ax.set_ylabel('Counts', fontsize=14)
     ax.tick_params(axis='both', which='major', labelsize=14)
     ax.set_xticks(ax.get_xticks()) 
-    ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+    ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
     
     plt.close(fig)  # Prevents the plot from displaying in interactive environments
     

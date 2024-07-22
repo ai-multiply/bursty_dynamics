@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.abspath('../bursty_dynamics'))
 
 project = 'Bursty Dynamics'
 copyright = '2024, AI-Multiply'
-author = 'AI-Multiply'
+author = 'Alisha Angdembe'
 release = '0.1'
 
 # -- General configuration ---------------------------------------------------

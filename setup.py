@@ -18,7 +18,7 @@ setup(
     long_description = long_description,
     long_description_content_type = "text/markdown",
     url = "https://github.com/ai-multiply/bursty_dynamics",
-    author = "AI-Multiply",
+    author = "Alisha Angdmebe",
     author_email = "alisha.angdembe1@gmail.com",
     licence = "MIT",
     classifiers = ["Programming Language :: Python :: 3"],
