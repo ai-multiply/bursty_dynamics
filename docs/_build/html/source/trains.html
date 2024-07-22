@@ -90,32 +90,30 @@
              
   <section id="bursty-dynamics-trains">
 <h1>bursty_dynamics.trains<a class="headerlink" href="#bursty-dynamics-trains" title="Link to this heading"></a></h1>
-<p>This module contains functions for detecting the trains, calculating the BP and MC of the trains, and also getting information of the trians.</p>
+<p>This module contains functions for detecting the trains, calculating the BP and MC of the trains, and also getting information of the trains.</p>
 <dl class="py function" id="module-bursty_dynamics.trains">
 <dt class="sig sig-object py" id="bursty_dynamics.trains.train_detection">
 <span class="sig-prename descclassname"><span class="pre">bursty_dynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'days'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_burst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_trains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.trains.train_detection" title="Link to this definition"></a></dt>
 <dd><p>Detects and assigns train IDs to events in the provided DataFrame based on the specified parameters.</p>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
-<blockquote>
-<div><dl class="simple">
+<dl class="simple">
 <dt>df<span class="classifier">DataFrame</span></dt><dd><p>The DataFrame containing the data.</p>
 </dd>
-<dt>subject_id<span class="classifier">str</span></dt><dd><p>The column name for patient IDs.</p>
+<dt>subject_id<span class="classifier">str</span></dt><dd><p>The column name for subject IDs.</p>
 </dd>
 <dt>time_col<span class="classifier">str</span></dt><dd><p>The column name for the datetime values.</p>
 </dd>
-<dt>max_iet<span class="classifier">int</span></dt><dd><p>Maximum distance between consecutive events in a train.</p>
+<dt>max_iet<span class="classifier">int</span></dt><dd><p>Maximum distance between consecutive events in a train, in units specified by <cite>time_unit</cite>.</p>
 </dd>
 <dt>time_unit<span class="classifier">str, optional</span></dt><dd><p>Unit of time for the intervals ('seconds', 'minutes', 'hours', 'days', 'weeks', 'months', and 'years').
 Default is 'days'.</p>
 </dd>
-<dt>min_burst<span class="classifier">int, optional</span></dt><dd><p>Minimum number of events to form a train. Default is 3.</p>
+<dt>min_burst<span class="classifier">int, optional</span></dt><dd><p>Minimum number of events required to form a train. Default is 3.</p>
 </dd>
 <dt>only_trains<span class="classifier">bool, optional</span></dt><dd><p>Whether to return only the events that form trains. Default is True.</p>
 </dd>
 </dl>
-</div></blockquote>
 </section>
 <section id="returns">
 <h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
@@ -123,6 +121,25 @@ Default is 'days'.</p>
 <dt>DataFrame</dt><dd><p>DataFrame with <cite>train_id</cite> included which indicates the train the events belong to.</p>
 </dd>
 </dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">&#39;subject_id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span> <span class="p">,</span><span class="mi">2</span> <span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;event_time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2023-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-01-02&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-01-10&#39;</span><span class="p">,</span><span class="s1">&#39;2023-01-20&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-01-03&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">train_df</span> <span class="o">=</span> <span class="n">train_detection</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;subject_id&#39;</span><span class="p">,</span> <span class="s1">&#39;event_time&#39;</span><span class="p">,</span> <span class="n">max_iet</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">time_unit</span><span class="o">=</span><span class="s1">&#39;days&#39;</span><span class="p">,</span> <span class="n">min_burst</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">train_df</span>
+<span class="go">     subject_id  event_time  train_id</span>
+<span class="go">0      1         2023-01-01    1</span>
+<span class="go">1      1         2023-01-02    1</span>
+<span class="go">2      1         2023-01-10    1</span>
+<span class="go">3      1         2023-01-20    1</span>
+<span class="go">4      2         2023-01-01    1</span>
+<span class="go">5      2         2023-01-03    1</span>
+</pre></div>
+</div>
 </section>
 </dd></dl>
 
@@ -150,14 +167,23 @@ Default is 'days'.</p>
 </dd>
 </dl>
 </section>
+<section id="id3">
+<h2>Examples<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">train_info</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;subject_id&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span> <span class="s1">&#39;event_time&#39;</span><span class="p">)</span>
+<span class="go">    subject_id train_id  unique_event_counts  total_term_counts  train_start  train_end  train_duration_yrs  total_trains</span>
+<span class="go">0      1          1          4                   4                2023-01-01   2023-01-20    0.05                 1</span>
+<span class="go">1      2          1          2                   2                2023-01-01   2023-01-03    0.01                 1</span>
+</pre></div>
+</div>
+</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bursty_dynamics.trains.train_scores">
 <span class="sig-prename descclassname"><span class="pre">bursty_dynamics.trains.</span></span><span class="sig-name descname"><span class="pre">train_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_event_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scatter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.trains.train_scores" title="Link to this definition"></a></dt>
 <dd><p>Calculate Burstiness Parameter (BP) and Memory Coefficient (MC) for each train_id per subject_id.</p>
-<section id="id3">
-<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="id4">
+<h2>Parameters<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>train_df<span class="classifier">pd.DataFrame</span></dt><dd><p>Input DataFrame.</p>
 </dd>
@@ -178,8 +204,8 @@ Default is 'days'.</p>
 </dd>
 </dl>
 </section>
-<section id="id4">
-<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h2>Returns<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>tuple or DataFrame</dt><dd><p>If both scatter and hist are True: returns (merged_df, scatter_plot, hist_plot).
 If only scatter is True: returns (merged_df, scatter_plot).
@@ -208,15 +234,16 @@ If neither scatter nor hist is True: returns merged_df.</p>
 </li>
 </ul>
 </section>
-</dd></dl>
-
-<p><strong>Example Usage:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bursty_dynamics.trains</span> <span class="kn">import</span> <span class="n">train_detection</span><span class="p">,</span> <span class="n">calculate_train_info</span><span class="p">,</span> <span class="n">calculate_scores_train</span>
-<span class="n">train_df</span> <span class="o">=</span> <span class="n">train_detection</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;eid&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span> <span class="s1">&#39;event_dt&#39;</span><span class="p">,</span> <span class="n">max_iet</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">time_unit</span><span class="o">=</span><span class="s1">&#39;days&#39;</span><span class="p">,</span> <span class="n">min_burst</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">train_info</span> <span class="o">=</span> <span class="n">calculate_train_info</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;eid&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span> <span class="s1">&#39;event_dt&#39;</span><span class="p">,</span> <span class="n">summary_statistic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">train_score</span> <span class="o">=</span> <span class="n">calculate_scores_train</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;eid&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span><span class="s1">&#39;event_dt&#39;</span><span class="p">,</span> <span class="n">min_event_n</span><span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<section id="id6">
+<h2>Examples<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">train_scores</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">subject_id</span> <span class="o">=</span> <span class="s1">&#39;subject_id&#39;</span><span class="p">,</span> <span class="n">time_col</span> <span class="o">=</span><span class="s1">&#39;event_time&#39;</span><span class="p">,</span> <span class="n">min_event_n</span><span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">    subject_id  train_id  BP         MC</span>
+<span class="go">0      1           1      -0.19709   1.0</span>
 </pre></div>
 </div>
+</section>
+</dd></dl>
+
 </section>
 
 

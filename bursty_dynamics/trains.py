@@ -13,26 +13,44 @@ def train_detection(df, subject_id, time_col, max_iet, time_unit='days', min_bur
 
     Parameters
     ----------
-        df : DataFrame
-            The DataFrame containing the data.
-        subject_id : str
-            The column name for patient IDs.
-        time_col : str
-            The column name for the datetime values.
-        max_iet : int
-            Maximum distance between consecutive events in a train.
-        time_unit : str, optional
-            Unit of time for the intervals ('seconds', 'minutes', 'hours', 'days', 'weeks', 'months', and 'years').
-            Default is 'days'.
-        min_burst : int, optional
-            Minimum number of events to form a train. Default is 3.
-        only_trains : bool, optional
-            Whether to return only the events that form trains. Default is True.
+    df : DataFrame
+        The DataFrame containing the data.
+    subject_id : str
+        The column name for subject IDs.
+    time_col : str
+        The column name for the datetime values.
+    max_iet : int
+        Maximum distance between consecutive events in a train, in units specified by `time_unit`.
+    time_unit : str, optional
+        Unit of time for the intervals ('seconds', 'minutes', 'hours', 'days', 'weeks', 'months', and 'years').
+        Default is 'days'.
+    min_burst : int, optional
+        Minimum number of events required to form a train. Default is 3.
+    only_trains : bool, optional
+        Whether to return only the events that form trains. Default is True.
     
     Returns
     -------
     DataFrame
         DataFrame with `train_id` included which indicates the train the events belong to.
+        
+    Examples
+    --------
+    >>> data = {
+    ...     'subject_id': [1, 1, 1, 1 ,2 ,2 ],
+    ...     'event_time': ['2023-01-01', '2023-01-02', '2023-01-10','2023-01-20', '2023-01-01', '2023-01-03']
+    ... }
+    >>> df = pd.DataFrame(data)
+    >>> train_df = train_detection(df, 'subject_id', 'event_time', max_iet=30, time_unit='days', min_burst=2)
+    >>> train_df
+         subject_id  event_time  train_id
+    0      1         2023-01-01    1
+    1      1         2023-01-02    1
+    2      1         2023-01-10    1
+    3      1         2023-01-20    1
+    4      2         2023-01-01    1
+    5      2         2023-01-03    1
+
     """
     if df.empty:
         raise ValueError("Input DataFrame is empty")
@@ -51,9 +69,13 @@ def train_detection(df, subject_id, time_col, max_iet, time_unit='days', min_bur
     except Exception as e:
         print(f"Error converting '{time_col}' to datetime: {e}")
         return
-        
-    df = df.sort_values([subject_id, time_col]).copy()
-    train_df = df.assign(train_id=df.groupby(subject_id)[time_col].transform(lambda x: find_bursts(x.values, max_iet, time_unit, min_burst)))
+    
+    try:
+        df = df.sort_values([subject_id, time_col]).copy()
+        train_df = df.assign(train_id=df.groupby(subject_id)[time_col].transform(lambda x: find_bursts(x.values, max_iet, time_unit, min_burst)))
+    except Exception as e:
+        raise RuntimeError(f"Error while assigning train IDs: {e}")
+    
     if only_trains == True:
         train_df = train_df[train_df['train_id']!= 0].copy()
         
@@ -79,6 +101,15 @@ def train_info(train_df, subject_id, time_col, summary_statistic=None):
     -------
     DataFrame
         DataFrame with calculated train information.
+        
+    Examples
+    --------
+    >>> train_info(train_df, subject_id = 'subject_id', time_col = 'event_time')
+        subject_id train_id  unique_event_counts  total_term_counts  train_start  train_end  train_duration_yrs  total_trains
+    0      1          1          4                   4                2023-01-01   2023-01-20    0.05                 1
+    1      2          1          2                   2                2023-01-01   2023-01-03    0.01                 1
+
+    
     """
     
     # Check if the required columns are in the DataFrame
@@ -159,6 +190,12 @@ def train_scores(train_df, subject_id, time_col, min_event_n=None, scatter=False
         The figure object containing the scatter plot (if scatter=True).
     - `hist_plots` : matplotlib.figure.Figure or None
         The figure objects containing the histogram (if hist=True).
+        
+    Examples
+    --------
+    >>> train_scores(train_df, subject_id = 'subject_id', time_col ='event_time', min_event_n= 3)
+        subject_id  train_id  BP         MC
+    0      1           1      -0.19709   1.0
         
     """
     # Check if the required columns are in the DataFrame

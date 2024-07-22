@@ -94,7 +94,7 @@
 <p>This module contains functions for plotting the results.</p>
 <dl class="py function" id="module-bursty_dynamics.visual">
 <dt class="sig sig-object py" id="bursty_dynamics.visual.event_counts">
-<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">event_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.event_counts" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">event_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.event_counts" title="Link to this definition"></a></dt>
 <dd><p>Plots a count of unique events per train from the given DataFrame.</p>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
@@ -103,6 +103,10 @@
 holds the count of unique events (no duplicates at same time) for different entries.</p>
 </dd>
 <dt>x_limit<span class="classifier">int, optional</span></dt><dd><p>The upper limit for the x-axis. Default is 30.</p>
+</dd>
+<dt>hue<span class="classifier">str, optional</span></dt><dd><p>Column name for hue segmentation. Default is None.</p>
+</dd>
+<dt>kwargs<span class="classifier"></span></dt><dd><p>Additional keyword arguments passed to <cite>sns.countplot</cite>.</p>
 </dd>
 </dl>
 </section>
@@ -155,7 +159,7 @@ holds the count of unique events (no duplicates at same time) for different entr
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bursty_dynamics.visual.histogram">
-<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.histogram" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.histogram" title="Link to this definition"></a></dt>
 <dd><p>Plot histograms for Burstiness Parameter (BP) and Memory Coefficient (MC).</p>
 <section id="id4">
 <h2>Parameters<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
@@ -169,14 +173,31 @@ Default is True.</p>
 </dd>
 <dt>set_axis<span class="classifier">bool, optional</span></dt><dd><p>Whether to set axis limits to [-1, 1]. Default is False.</p>
 </dd>
+<dt>hue<span class="classifier">str, optional</span></dt><dd><p>Column name for hue segmentation. Default is None.</p>
+</dd>
+<dt>kwargs<span class="classifier"></span></dt><dd><p>Additional keyword arguments passed to <cite>sns.histplot</cite>.</p>
+</dd>
 </dl>
 </section>
 <section id="id5">
 <h2>Returns<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <dl class="simple">
-<dt>list</dt><dd><p>List of matplotlib.figure.Figure objects containing the generated plots.</p>
+<dt>matplotlib.figure.Figure or None</dt><dd><p>Figure object containing the generated plots if successful,
+otherwise None if the 'hist' parameter is invalid.</p>
 </dd>
 </dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>If 'hist' is True, it will create separate histograms for 'BP' and 'MC' side by side.</p></li>
+<li><p>If 'hist' is 'Both', it will create overlapping histograms for 'BP' and 'MC' on the same plot.</p></li>
+<li><p>If 'hist' is 'BP' or 'MC', it will create a histogram for the specified column.</p></li>
+<li><p>The <cite>hue</cite> parameter allows for segmented histograms based on the specified column.</p></li>
+<li><p>When <cite>hist</cite> is set to 'Both', the <cite>hue</cite> parameter is ignored.</p></li>
+<li><p>The <cite>set_axis</cite> parameter can be used to standardize the x-axis range to [-1, 1].</p></li>
+<li><p>Additional styling and plotting options can be passed through <cite>**kwargs</cite>.</p></li>
+</ul>
 </section>
 <section id="id6">
 <h2>Example<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
@@ -187,14 +208,16 @@ Default is True.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bursty_dynamics.visual.scatterplot">
-<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">scatterplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.scatterplot" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">scatterplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.scatterplot" title="Link to this definition"></a></dt>
 <dd><p>Create a scatter plot with marginal histograms showing the relationship between 'MC' and 'BP'.</p>
 <section id="id7">
 <h2>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <dl class="simple">
-<dt>df<span class="classifier">DataFrame</span></dt><dd><p>Input DataFrame containing columns 'MC' and 'BP'.</p>
+<dt>df<span class="classifier">DataFrame</span></dt><dd><p>Input DataFrame containing columns 'MC' and 'BP' which are plotted on the x and y axes, respectively.</p>
 </dd>
-<dt>set_axis<span class="classifier">bool, optional</span></dt><dd><p>Whether to set axis limits to [-1, 1]. Default is False.</p>
+<dt>hue<span class="classifier">str, optional</span></dt><dd><p>Column name in the DataFrame used for color encoding of the scatter plot. If None, the plot is created without color encoding.</p>
+</dd>
+<dt>set_axis<span class="classifier">bool, optional</span></dt><dd><p>Whether to set the axis limits to [-1, 1]. Default is False. If True, the x and y axes will be constrained to the range [-1, 1].</p>
 </dd>
 <dt>kwargs</dt><dd><p>Additional keyword arguments passed to <cite>sns.jointplot</cite>.</p>
 </dd>
@@ -216,7 +239,7 @@ Default is True.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bursty_dynamics.visual.train_duration">
-<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">train_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.train_duration" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">bursty_dynamics.visual.</span></span><span class="sig-name descname"><span class="pre">train_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_info_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bursty_dynamics.visual.train_duration" title="Link to this definition"></a></dt>
 <dd><p>Plots a distribution of train durations in years from the given DataFrame.</p>
 <section id="id10">
 <h2>Parameters<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
@@ -226,12 +249,16 @@ holds the duration of training in years for different entries.</p>
 </dd>
 <dt>x_limit<span class="classifier">int, optional</span></dt><dd><p>The upper limit for the x-axis. Default is 5.</p>
 </dd>
+<dt>hue<span class="classifier">str, optional</span></dt><dd><p>Column name for hue segmentation. Default is None.</p>
+</dd>
+<dt>kwargs<span class="classifier"></span></dt><dd><p>Additional keyword arguments passed to <cite>sns.histplot</cite>.</p>
+</dd>
 </dl>
 </section>
 <section id="id11">
 <h2>Returns<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
 <dl class="simple">
-<dt>None</dt><dd><p>This function only displays the plot and does not return any value.</p>
+<dt>matplotlib.figure.Figure</dt><dd><p>Figure object containing the generated plot.</p>
 </dd>
 </dl>
 </section>

@@ -48,7 +48,7 @@ def gridplot(df, bins=25, lower_limit=0, text_scaling=6, figsize=(9, 7), **kwarg
     return fig
     
     
-def histogram(df, hist=True, set_axis=False, **kwargs):
+def histogram(df, hist=True, set_axis=False, hue=None, **kwargs):
     """
     Plot histograms for Burstiness Parameter (BP) and Memory Coefficient (MC).
 
@@ -63,11 +63,27 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
         Default is True.
     set_axis : bool, optional
         Whether to set axis limits to [-1, 1]. Default is False.
+    hue : str, optional
+        Column name for hue segmentation. Default is None.
+    kwargs : 
+        Additional keyword arguments passed to `sns.histplot`.
+
 
     Returns
     -------
-    list
-        List of matplotlib.figure.Figure objects containing the generated plots.
+    matplotlib.figure.Figure or None
+        Figure object containing the generated plots if successful,
+        otherwise None if the 'hist' parameter is invalid.
+        
+    Notes
+    -----
+    - If 'hist' is True, it will create separate histograms for 'BP' and 'MC' side by side.
+    - If 'hist' is 'Both', it will create overlapping histograms for 'BP' and 'MC' on the same plot.
+    - If 'hist' is 'BP' or 'MC', it will create a histogram for the specified column.
+    - The `hue` parameter allows for segmented histograms based on the specified column.
+    - When `hist` is set to 'Both', the `hue` parameter is ignored.
+    - The `set_axis` parameter can be used to standardize the x-axis range to [-1, 1].
+    - Additional styling and plotting options can be passed through `**kwargs`.
         
     Example
     -------
@@ -82,14 +98,19 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
     sns.set_theme(rc={'figure.figsize': (9, 7)}, style='white')
 
     hist_options = {
-        "BP": ("BP", "blue"),
-        "MC": ("MC", "magenta")}
+        "BP": "blue",
+        "MC": "magenta"}
+    
+    if hue is not None:
+        palette = sns.color_palette("bright", df[hue].nunique())
+    else:
+        palette = None
     
 
-    if hist in hist_options:
-        column, color = hist_options[hist]
+    if hist in ['BP', 'MC']:
+        color = hist_options[hist]
         fig = plt.figure()
-        sns.histplot(data=df, x=column, kde=True, color=color, **kwargs)
+        sns.histplot(data=df, x=hist, kde=True, hue=hue, palette=palette, color = color, **kwargs)
         if set_axis:
             plt.xlim(-1, 1)
         plt.close(fig)
@@ -108,8 +129,8 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
     
     elif hist is True:
         fig, axs = plt.subplots(1, len(hist_options), figsize=(12, 6))  # Create subplots based on number of hist_options
-        for i, (column, color) in enumerate(hist_options.values()):
-            sns.histplot(data=df, x=column, kde=True, color=color, ax=axs[i], **kwargs)
+        for i, (column, color) in enumerate({'BP': 'blue', 'MC': 'magenta'}.items()):
+            sns.histplot(data=df, x=column, hue=hue, kde=True, palette=palette, color=color, ax=axs[i], **kwargs)
             axs[i].set_xlabel(column)
             if set_axis:
                 axs[i].set_xlim(-1, 1)
@@ -121,16 +142,18 @@ def histogram(df, hist=True, set_axis=False, **kwargs):
         
         
 
-def scatterplot(df, set_axis=False, **kwargs):
+def scatterplot(df, hue=None, set_axis=False, **kwargs):
     """
     Create a scatter plot with marginal histograms showing the relationship between 'MC' and 'BP'.
 
     Parameters
     ----------
     df : DataFrame
-        Input DataFrame containing columns 'MC' and 'BP'.
+        Input DataFrame containing columns 'MC' and 'BP' which are plotted on the x and y axes, respectively.
+    hue : str, optional
+        Column name in the DataFrame used for color encoding of the scatter plot. If None, the plot is created without color encoding.
     set_axis : bool, optional
-        Whether to set axis limits to [-1, 1]. Default is False.
+        Whether to set the axis limits to [-1, 1]. Default is False. If True, the x and y axes will be constrained to the range [-1, 1].
     kwargs
         Additional keyword arguments passed to `sns.jointplot`.
 
@@ -149,19 +172,43 @@ def scatterplot(df, set_axis=False, **kwargs):
        :scale: 40%
        
     """
-    sns.set_theme(style='white')
-    plot= sns.jointplot(data=df, x="MC", y="BP", kind="reg", scatter_kws=dict(alpha=0.3, color='blue'),  line_kws=dict(color='black', linewidth=1),
-                       marginal_kws=dict(bins=20), **kwargs)
+    if hue:
+        plot = sns.jointplot(
+            data=df,
+            x='MC',
+            y='BP',
+            kind='scatter',
+            hue=hue,
+            palette="tab10",
+            joint_kws=dict(s=50, alpha=0.4, edgecolor=None),
+            **kwargs)       
+        plot.ax_joint.legend(loc='upper right', bbox_to_anchor=(1.17, 1.22))
+        plt.subplots_adjust(right=0.8)
+
+        
+    else:
+        # Plot without hue
+        plot = sns.jointplot(
+            data=df,
+            x='MC',
+            y='BP',
+            kind="reg",
+            scatter_kws=dict(alpha=0.3, color='blue'),
+            line_kws=dict(color='black', linewidth=1),
+            marginal_kws=dict(bins=20),
+            **kwargs)
+        
+    # Adjust axis limits if set_axis is True
     if set_axis:
         plot.ax_joint.set_xlim(-1, 1)
         plot.ax_joint.set_ylim(-1, 1)
-    plot.fig.set_size_inches((9.5, 7))
+        
+    plot.fig.set_size_inches((9.5, 7)) 
     plt.close(plot.fig)
     return plot.fig
 
 
-
-def train_duration(train_info_df, x_limit=5, **kwargs):
+def train_duration(train_info_df, x_limit=5, hue=None,**kwargs):
     """
     Plots a distribution of train durations in years from the given DataFrame.
 
@@ -172,11 +219,15 @@ def train_duration(train_info_df, x_limit=5, **kwargs):
         holds the duration of training in years for different entries.
     x_limit : int, optional
         The upper limit for the x-axis. Default is 5.
+    hue : str, optional
+        Column name for hue segmentation. Default is None.
+    kwargs : 
+        Additional keyword arguments passed to `sns.histplot`.
 
     Returns
     -------
-    None
-        This function only displays the plot and does not return any value.
+    matplotlib.figure.Figure
+        Figure object containing the generated plot.
         
     Example
     -------
@@ -189,8 +240,14 @@ def train_duration(train_info_df, x_limit=5, **kwargs):
        
     """
     fig, ax = plt.subplots()
-    sns.histplot(train_info_df["train_duration_yrs"], kde=True, 
-                 bins=round(train_info_df['train_duration_yrs'].max()*2), color = 'darkblue', **kwargs)
+    
+    if hue is not None:
+        palette = sns.color_palette("bright", train_info_df[hue].nunique())
+    else:
+        palette = None
+        
+    sns.histplot(data=train_info_df, x="train_duration_yrs", kde=True, 
+                 bins=round(train_info_df['train_duration_yrs'].max()*2), hue=hue, palette=palette, color = 'darkblue', **kwargs)
     ax.set_xlabel('Train duration (years)', fontsize=14)
     ax.set_ylabel('Density', fontsize=14) 
     ax.tick_params(axis='both', which='major', labelsize=14)
@@ -198,7 +255,8 @@ def train_duration(train_info_df, x_limit=5, **kwargs):
     plt.close(fig)
     return fig
 
-def event_counts(train_info_df, x_limit=30, **kwargs):
+
+def event_counts(train_info_df, x_limit=30, hue=None, **kwargs):
     """
     Plots a count of unique events per train from the given DataFrame.
 
@@ -209,6 +267,10 @@ def event_counts(train_info_df, x_limit=30, **kwargs):
         holds the count of unique events (no duplicates at same time) for different entries.
     x_limit : int, optional
         The upper limit for the x-axis. Default is 30.
+    hue : str, optional
+        Column name for hue segmentation. Default is None.
+    kwargs : 
+        Additional keyword arguments passed to `sns.countplot`.
 
     Returns
     -------
@@ -226,12 +288,21 @@ def event_counts(train_info_df, x_limit=30, **kwargs):
        
     """
     fig, ax = plt.subplots(figsize=(8, 5))
+
+    if hue is not None:
+        palette = sns.color_palette("bright", train_info_df[hue].nunique())
+    else:
+        palette = None
+
     sns.countplot(data=train_info_df[train_info_df["unique_event_counts"] <= x_limit], 
-                  x="unique_event_counts", color='darkblue', ax=ax, **kwargs)
-    ax.set_xlabel('Events counts per train', fontsize=14)
+                  x="unique_event_counts", hue=hue, palette=palette, ax=ax, **kwargs)
+    
+    ax.set_xlabel('Event counts per train', fontsize=14)
     ax.set_ylabel('Counts', fontsize=14)
     ax.tick_params(axis='both', which='major', labelsize=14)
+    ax.set_xticks(ax.get_xticks()) 
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+    
     plt.close(fig)  # Prevents the plot from displaying in interactive environments
     
     return fig

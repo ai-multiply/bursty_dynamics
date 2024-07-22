@@ -3,7 +3,7 @@ import pandas as pd
 from .shared_function import *
 from .visual import *
 
-def calculate_scores(df, subject_id, time_col, scatter=False, hist=False):
+def calculate_scores(df, subject_id, time_col, scatter=False, hist=False, hue=None):
     """
     Calculate burstiness parameter and memory coefficient.
 
@@ -42,6 +42,8 @@ def calculate_scores(df, subject_id, time_col, scatter=False, hist=False):
     - `hist_plots` : matplotlib.figure.Figure or None
         The figure objects containing the histogram (if hist=True).
     - Duplicate events based on the `subject_id` and `time_col` are removed to ensure each subject has unique event times before calculating the BP and MC. 
+    
+    
     """    
 
     # Check if the required columns are in the DataFrame
@@ -86,7 +88,7 @@ def calculate_scores(df, subject_id, time_col, scatter=False, hist=False):
 
     try:
         if scatter:
-            scatter_plot = scatterplot(merged_df)  # Scatter plot
+            scatter_plot = scatterplot(merged_df, hue=hue)  # Scatter plot
 
         if hist:
             hist_plots = histogram(merged_df, hist)  # Histogram
