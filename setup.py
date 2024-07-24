@@ -12,7 +12,7 @@ DESCRIPTION = 'bursty_dynamics is a Python package designed to facilitate the an
     
 setup(
     name= 'bursty_dynamics',
-    version = '0.0.5', 
+    version = '0.0.4', 
     description = DESCRIPTION,
     packages = find_packages(),
     long_description = long_description,
