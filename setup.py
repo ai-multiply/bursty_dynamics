@@ -7,7 +7,7 @@ except FileNotFoundError:
     long_description = "Long description of the bursty_dynamics package. Readme.md not found."
     
 
-DESCRIPTION = 'bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.'
+DESCRIPTION = 'bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualise results.'
 
     
 setup(
