@@ -14,6 +14,7 @@ Bursty Dynamics documentation
    
    User Guide <source/user_guide/index.rst>
    API Reference <source/modules.rst>
+   Contact Us <source/contact_us/index.rst>
 
 
 
@@ -26,12 +27,12 @@ Bursty Dynamics is a Python package designed to facilitate the analysis of tempo
 
 
 .. grid:: 1 1 2 2
-    :gutter: 2
+    :gutter: 3
 
     .. grid-item-card::
         :text-align: center
 
-        User guide
+        **User guide**
         ^^^
 
         Provides information on how to get started with Bursty Dynamics.
@@ -40,15 +41,15 @@ Bursty Dynamics is a Python package designed to facilitate the analysis of tempo
 
         .. button-ref:: source/user_guide/index
             :expand:
-            :color: secondary
-            :click-parent:
+            :color: primary
+            :class: button-link
 
             Click here
             
     .. grid-item-card::
       :text-align: center
 
-      API Reference
+      **API Reference**
       ^^^
 
       Detailed description of the functions and modules in Bursty Dynamics.
@@ -57,7 +58,23 @@ Bursty Dynamics is a Python package designed to facilitate the analysis of tempo
 
       .. button-ref:: source/modules
          :expand:
-         :color: secondary
-         :click-parent:
+         :color: primary
+         :class: button-link
 
          Click here
+         
+    .. grid-item-card::
+      :text-align: center
+
+      **Contact Us**
+      ^^^
+      Get in touch with us through our discussion board or email for any queries or support.
+
+      +++
+
+      .. button-ref:: source/contact_us/index
+         :expand:
+         :color: primary
+         :class: button-link
+
+         Click here 

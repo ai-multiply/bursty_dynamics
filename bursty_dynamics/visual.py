@@ -95,6 +95,10 @@ def histogram(df, hist=True, set_axis=False, hue=None, **kwargs):
        :scale: 40%
        
     """
+    # Check if required columns are in the DataFrame
+    if hue and hue not in df.columns:
+        raise ValueError(f"Hue column '{hue}' not found in DataFrame.")
+        
     sns.set_theme(rc={'figure.figsize': (9, 7)}, style='white')
 
     hist_options = {
@@ -172,6 +176,12 @@ def scatterplot(df, hue=None, set_axis=False, **kwargs):
        :scale: 40%
        
     """
+    # Check if required columns are in the DataFrame
+    if 'MC' not in df.columns or 'BP' not in df.columns:
+        raise ValueError("DataFrame must contain 'MC' and 'BP' columns.")
+    if hue and hue not in df.columns:
+        raise ValueError(f"Hue column '{hue}' not found in DataFrame.")
+        
     if hue:
         plot = sns.jointplot(
             data=df,
@@ -182,7 +192,7 @@ def scatterplot(df, hue=None, set_axis=False, **kwargs):
             palette="tab10",
             joint_kws=dict(s=50, alpha=0.4, edgecolor=None),
             **kwargs)       
-        plot.ax_joint.legend(loc='upper right', bbox_to_anchor=(1.17, 1.22))
+        plot.ax_joint.legend(loc='upper right', bbox_to_anchor=(1.25, 1.22))
         plt.subplots_adjust(right=0.8)
 
         
@@ -239,6 +249,10 @@ def train_duration(train_info_df, x_limit=5, hue=None,**kwargs):
        :scale: 40%
        
     """
+    # Check if required columns are in the DataFrame
+    if hue and hue not in train_info_df.columns:
+        raise ValueError(f"Hue column '{hue}' not found in DataFrame.")
+        
     fig, ax = plt.subplots()
     
     if hue is not None:
@@ -287,6 +301,10 @@ def event_counts(train_info_df, x_limit=30, hue=None, **kwargs):
        :scale: 40%
        
     """
+    # Check if required columns are in the DataFrame
+    if hue and hue not in train_info_df.columns:
+        raise ValueError(f"Hue column '{hue}' not found in DataFrame.")
+        
     fig, ax = plt.subplots(figsize=(8, 5))
 
     if hue is not None:
