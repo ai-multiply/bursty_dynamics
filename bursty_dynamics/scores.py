@@ -41,7 +41,7 @@ def calculate_scores(df, subject_id, time_col, scatter=False, hist=False, hue=No
         The figure object containing the scatter plot (if scatter=True).
     - `hist_plots` : matplotlib.figure.Figure or None
         The figure objects containing the histogram (if hist=True).
-    - Duplicate events based on the `subject_id` and `time_col` are removed to ensure each subject has unique event times before calculating the BP and MC. 
+    - Multiple events occurring at the same time will be aggregated into a single event. 
     
     
     """    

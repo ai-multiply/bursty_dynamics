@@ -1,8 +1,5 @@
 from setuptools import find_packages, setup
-import os
 
-print("Current working directory:", os.getcwd())
-print("Files in the current directory:", os.listdir('.'))
 
 try:
     with open("Readme.md", "r", encoding="utf-8") as fh:
@@ -16,7 +13,7 @@ DESCRIPTION = 'bursty_dynamics is a Python package designed to facilitate the an
     
 setup(
     name= 'bursty_dynamics',
-    version = '0.0.5', 
+    version = '0.0.6', 
     description = DESCRIPTION,
     packages = find_packages(),
     long_description = long_description,

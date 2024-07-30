@@ -11,7 +11,7 @@ This package implements the alternate burstiness parameter described in the pape
 - Burstiness Parameter (BP) and Memory Coefficient (MC) Calculation: Calculate BP and MC to quantify the irregularity and memory effects of event timing within longitudinal data.
 - Event Train Detection: Detect and label event trains based on user-defined criteria such as maximum inter-event time and minimum burst size.
 - Train-Level Analysis: Analyse BP and MC for detected event trains, providing insights into temporal patterns within clusters of events.
-- Visualization Tools: Visualise temporal patterns with scatter plots, histograms, kernel density estimates (KDE), and more, facilitating interpretation of analysis results.
+- Visualisation Tools: Visualise temporal patterns with scatter plots, histograms, kernel density estimates (KDE), and more, facilitating interpretation of analysis results.
 - User-Friendly Interface: Designed for ease of use, with clear function parameters and output formats, making it accessible to both novice and experienced users.
 
 ## Installation

@@ -190,6 +190,7 @@ def train_scores(train_df, subject_id, time_col, min_event_n=None, scatter=False
         The figure object containing the scatter plot (if scatter=True).
     - `hist_plots` : matplotlib.figure.Figure or None
         The figure objects containing the histogram (if hist=True).
+    - Multiple events occurring at the same time will be aggregated into a single event when calcualting the BP and MC. 
         
     Examples
     --------

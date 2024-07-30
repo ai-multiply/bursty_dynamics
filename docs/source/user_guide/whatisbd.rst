@@ -4,7 +4,7 @@
 What is Bursty Dynamics?
 ************************
 
-Bursty Dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualize results.
+Bursty Dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualise results.
 An event is a timestamped record in the data. 
 A train is a cluster of events that occur in close temporal proximity to each other. 
 
@@ -20,7 +20,7 @@ Key Features
 - **Train-Level Analysis:**
   Analyse BP and MC for detected event trains, providing insights into temporal patterns within clusters of events.
 
-- **Visualization Tools:**
+- **Visualisation Tools:**
   Visualise temporal patterns with scatter plots, histograms, kernel density estimates (KDE), and more, facilitating interpretation of analysis results.
 
 - **User-Friendly Interface:**
