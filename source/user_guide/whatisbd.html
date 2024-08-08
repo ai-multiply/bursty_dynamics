@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What is Bursty Dynamics? &mdash; Bursty Dynamics 0.1 documentation</title>
+  <title>What is Bursty Dynamics? &mdash; Bursty Dynamics 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
@@ -17,7 +17,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=2ed17a75"></script>
+        <script src="../../_static/documentation_options.js?v=959672f5"></script>
         <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -116,6 +116,7 @@ Designed for ease of use, with clear function parameters and output formats, mak
 <p>Burstiness parameter is a quantitative measure of the irregularity of events occurring over time. The burstiness parameter is measured using the mean (μ) and standard deviation (σ) of the inter-event time distribution as shown in the equation below.</p>
 <a class="reference internal image-reference" href="../../_images/equation1.png"><img alt="../../_images/equation1.png" src="../../_images/equation1.png" style="width: 384.0px; height: 75.0px;" /></a>
 <p>The score ranges between -1 and 1, where a score closer to -1 indicates more regular intervals between events, a score near 0 suggests a random distribution of events, and a value score to 1 indicates a more severe burst pattern, when σ→∞, characterized by rapid, intense occurrences of events. This score is crucial in differentiating between regular, random, and bursty time series. We use the measure, burstiness parameter A, defined by (Kim and Jo, 2016) as an extension of (Goh and Barabasi, 2008) that accounts for the varying length of events.</p>
+<p>One important aspect to note is that the burstiness measure is invariant under scaling and translation of the underlying times. Regularly spaced events across days, months or years will have the same measure of burstiness.</p>
 </section>
 <section id="what-is-memory-coefficient">
 <h3>What is Memory Coefficient?<a class="headerlink" href="#what-is-memory-coefficient" title="Link to this heading"></a></h3>
@@ -125,7 +126,7 @@ Designed for ease of use, with clear function parameters and output formats, mak
 </section>
 <section id="what-is-train-detection">
 <h3>What is Train Detection?<a class="headerlink" href="#what-is-train-detection" title="Link to this heading"></a></h3>
-<p>Train detection is a method to identify clusters of events within longitudinal data. A &quot;train&quot; is a sequence of events that are closely spaced in time, indicating a period of intense activity. For a series of events to be considered a train, the time intervals between consecutive events must be shorter than a predefined threshold (maximum inter-event time), and there must be at least a minimum number of events in the sequence.</p>
+<p>Inspired by the work of Corner et al. (2002), we are implementing a technique to identify clusters of events, known as train detection. This method focuses on detecting clusters of closely spaced events within longitudinal data. In this context, a &quot;train&quot; refers to a sequence of events occurring in close temporal proximity, indicating a period of heightened activity. For a series of events to be considered a train, the time intervals between consecutive events must be shorter than or equal to a predefined threshold (maximum inter-event time), and there must be at least a minimum number of events in the sequence.</p>
 <a class="reference internal image-reference" href="../../_images/train.png"><img alt="../../_images/train.png" src="../../_images/train.png" style="width: 310.79999999999995px; height: 144.2px;" /></a>
 <p>Maximum Inter-Event Time Threshold: This threshold sets the maximum allowable time gap between consecutive events for them to be considered part of the same train. If the time gap between two successive events exceeds this threshold, the second event is not included in the current train, marking the end of that train.</p>
 <p>Minimum Number of Events Threshold: This threshold ensures that a train has enough events to be considered significant. It sets the minimum number of events required for a sequence to qualify as a train.</p>
@@ -133,6 +134,7 @@ Designed for ease of use, with clear function parameters and output formats, mak
 <section id="references">
 <h3>References<a class="headerlink" href="#references" title="Link to this heading"></a></h3>
 <ul class="simple">
+<li><p>Corner, M.A. et al. (2002) 'Physiological effects of sustained blockade of excitatory synaptic transmission on spontaneously active developing neuronal networks—an inquiry into the reciprocal linkage between intrinsic biorhythms and neuroplasticity in early ontogeny,' Neuroscience &amp; Biobehavioral Reviews/Neuroscience and Biobehavioral Reviews, 26(2), pp. 127–185. <a class="reference external" href="https://doi.org/10.1016/s0149-7634(01)00062-8">https://doi.org/10.1016/s0149-7634(01)00062-8</a>.</p></li>
 <li><p>Goh, K., &amp; Barabási, A. (2008). Burstiness and memory in complex systems. Europhysics Letters, 81(4), 48002. <a class="reference external" href="https://doi.org/10.1209/0295-5075/81/48002">https://doi.org/10.1209/0295-5075/81/48002</a></p></li>
 <li><p>Kim, E., &amp; Jo, H. (2016). Measuring burstiness for finite event sequences. Physical Review. E, 94(3). <a class="reference external" href="https://doi.org/10.1103/physreve.94.032311">https://doi.org/10.1103/physreve.94.032311</a></p></li>
 </ul>
