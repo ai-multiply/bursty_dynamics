@@ -1,33 +1,64 @@
-name: Build-sphinx-docs
+name: Build and Deploy Sphinx Docs
 
 on:
   push:
     branches:
-      - main 
+      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.10'
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Build HTML
-        run: | 
-          cd docs/
-          make html
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: docs/_build/html                                       
+    - name: Fetch previous commit
+      run: git fetch origin main
+
+    - name: Extract current release version
+      id: current_version
+      run: |
+        grep -oP "(?<=release = ')[^']+" docs/conf.py > current_version.txt
+        cat current_version.txt
+
+    - name: Extract previous release version
+      id: previous_version
+      run: |
+        git show HEAD~1:docs/conf.py | grep -oP "(?<=release = ')[^']+" > previous_version.txt
+        cat previous_version.txt || echo "No previous version found" > previous_version.txt
+
+    - name: Compare release versions
+      id: compare_versions
+      run: |
+        if [ "$(cat current_version.txt)" != "$(cat previous_version.txt)" ]; then
+          echo "Release version changed"
+          echo "release_version_changed=true" >> $GITHUB_ENV
+        else
+          echo "Release version unchanged"
+          echo "release_version_changed=false" >> $GITHUB_ENV
+        fi
+
+    - name: Build HTML
+      if: env.release_version_changed == 'true'
+      run: |
+        cd docs/
+        make html
+
+    - name: Deploy to GitHub Pages
+      if: env.release_version_changed == 'true'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        publish_dir: docs/_build/html

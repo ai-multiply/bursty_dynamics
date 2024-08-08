@@ -3,7 +3,7 @@ import seaborn as sns
 
 def gridplot(df, bins=25, lower_limit=0, text_scaling=6, figsize=(9, 7), **kwargs):
     """
-    Create a grid plot of Memory Coefficient (MC) vs Burstiness Parameter (BP) with a color bar.
+    Create a grid plot of Memory Coefficient (MC) vs Burstiness Parameter (BP) with a colour bar.
 
     Parameters
     ----------
@@ -124,7 +124,7 @@ def histogram(df, hist=True, set_axis=False, hue=None, **kwargs):
         fig = plt.figure()
         sns.histplot(data=df, x="BP", kde=True, color='blue', **kwargs)
         sns.histplot(data=df, x="MC", kde=True, color='magenta', alpha=0.5, **kwargs)
-        plt.xlabel("")
+        plt.xlabel("Score")
         plt.legend(labels=['BP', 'MC'])
         if set_axis:
             plt.xlim(-1, 1)

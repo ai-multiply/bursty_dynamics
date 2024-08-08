@@ -8,7 +8,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=db7d059e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
 
   
   <!--[if lt IE 9]>
@@ -50,7 +50,6 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="bursty_dynamics.html">bursty_dynamics package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scores.html">bursty_dynamics.scores</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">bursty_dynamics.trains</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.trains.train_detection"><code class="docutils literal notranslate"><span class="pre">train_detection()</span></code></a></li>
@@ -233,6 +232,7 @@ If neither scatter nor hist is True: returns merged_df.</p>
 </dd>
 </dl>
 </li>
+<li><p>Multiple events occurring at the same time will be aggregated into a single event when calcualting the BP and MC.</p></li>
 </ul>
 </section>
 <section id="id6">

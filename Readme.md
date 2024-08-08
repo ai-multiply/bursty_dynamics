@@ -43,7 +43,7 @@ bursty_dynamics is licensed under the MIT License. See the LICENSE file for more
 
 
 ## Contributing
-Contributions are welcome! If you encounter any issues or have suggestions for improvements, feel free to open an issue or submit a pull request on GitHub.
+Contributions are welcome! If you encounter any issues or have suggestions for improvements, feel free to open an [issue](https://github.com/ai-multiply/bursty_dynamics/issues) or for questions, suggestions, or general discussion related to our project, please visit our [GitHub Discussions page](https://github.com/ai-multiply/bursty_dynamics/discussions).
 
 
 

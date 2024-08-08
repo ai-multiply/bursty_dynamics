@@ -8,7 +8,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=db7d059e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
 
   
   <!--[if lt IE 9]>
@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="bursty_dynamics.trains" href="trains.html" />
-    <link rel="prev" title="bursty_dynamics package" href="bursty_dynamics.html" /> 
+    <link rel="prev" title="bursty_dynamics" href="modules.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,7 +50,6 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="bursty_dynamics.html">bursty_dynamics package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">bursty_dynamics.scores</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bursty_dynamics.scores.calculate_scores"><code class="docutils literal notranslate"><span class="pre">calculate_scores()</span></code></a></li>
 </ul>
@@ -146,7 +145,7 @@ If neither scatter nor hist is True: returns merged_df.</p>
 </dd>
 </dl>
 </li>
-<li><p>Duplicate events based on the <cite>subject_id</cite> and <cite>time_col</cite> are removed to ensure each subject has unique event times before calculating the BP and MC.</p></li>
+<li><p>Multiple events occurring at the same time will be aggregated into a single event.</p></li>
 </ul>
 </section>
 </dd></dl>
@@ -157,7 +156,7 @@ If neither scatter nor hist is True: returns merged_df.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="bursty_dynamics.html" class="btn btn-neutral float-left" title="bursty_dynamics package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-left" title="bursty_dynamics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="trains.html" class="btn btn-neutral float-right" title="bursty_dynamics.trains" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

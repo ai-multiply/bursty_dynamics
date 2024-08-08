@@ -113,10 +113,10 @@ def train_info(train_df, subject_id, time_col, summary_statistic=None):
     """
     
     # Check if the required columns are in the DataFrame
-    if subject_id not in df.columns:
+    if subject_id not in train_df.columns:
         print(f"Error: '{subject_id}' column not found in the DataFrame.")
         return
-    if time_col not in df.columns:
+    if time_col not in train_df.columns:
         print(f"Error: '{time_col}' column not found in the DataFrame.")
         return
     
@@ -200,10 +200,10 @@ def train_scores(train_df, subject_id, time_col, min_event_n=None, scatter=False
         
     """
     # Check if the required columns are in the DataFrame
-    if subject_id not in df.columns:
+    if subject_id not in train_df.columns:
         print(f"Error: '{subject_id}' column not found in the DataFrame.")
         return
-    if time_col not in df.columns:
+    if time_col not in train_df.columns:
         print(f"Error: '{time_col}' column not found in the DataFrame.")
         return
     

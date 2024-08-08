@@ -111,8 +111,8 @@ def calculate_scores(df, subject_id, time_col, scatter=False, hist=False, hue=No
 def find_interval_times(events):
     try:
         # Ensure events is a numpy array of datetime64
-        if not isinstance(events, np.ndarray) or events.dtype.type != np.datetime64:
-            raise ValueError("Input must be a numpy array of datetime64 elements.")
+        if events.dtype.type != np.datetime64:
+            raise ValueError("Input must be datetime64 elements.")
         
         # Ensure there are at least two events to find intervals
         if len(events) < 2:
