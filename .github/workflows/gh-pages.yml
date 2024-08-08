@@ -32,18 +32,34 @@ jobs:
       run: |
         grep -oP "(?<=release = ')[^']+" docs/conf.py > current_version.txt
         cat current_version.txt
+        
+    - name: Check if there is a previous commit
+      id: check_previous_commit
+      run: |
+        git fetch --depth=2
+        if git rev-parse HEAD~1 >/dev/null 2>&1; then
+          echo "Previous commit exists"
+          echo "previous_commit_exists=true" >> $GITHUB_ENV
+        else
+          echo "No previous commit found"
+          echo "previous_commit_exists=false" >> $GITHUB_ENV
+        fi
 
     - name: Extract previous release version
       id: previous_version
       run: |
-        git show HEAD~1:docs/conf.py | grep -oP "(?<=release = ')[^']+" > previous_version.txt
-        cat previous_version.txt || echo "No previous version found" > previous_version.txt
+        if [ "${{ env.previous_commit_exists }}" == "true" ]; then
+          git show HEAD~1:docs/conf.py | grep -oP "(?<=release = ')[^']+" > previous_version.txt
+        else
+          echo "0.0.0" > previous_version.txt  # Fake previous release version
+        fi
+        cat previous_version.txt
 
     - name: Compare release versions
       id: compare_versions
       run: |
         if [ "$(cat current_version.txt)" != "$(cat previous_version.txt)" ]; then
-          echo "Release version changed"
+          echo "Release version changed or first run"
           echo "release_version_changed=true" >> $GITHUB_ENV
         else
           echo "Release version unchanged"
