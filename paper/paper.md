@@ -1,7 +1,7 @@
 ---
 title: 'bursty_dynamics: A Python package for exploring the temporal properties of longitudinal data'
 tags:
-  - python
+  - Python
   - longitudinal data
   - bursty
   - burstiness parameter
@@ -24,9 +24,11 @@ authors:
   - name: Nick Reynolds
     affiliation: "6, 7"
   - name: Rafael Henkin
-    affiliation: "*, 1, 2"
+    equal-contrib: true
+    affiliation: "1, 2"
   - name: Michael R Barnes
-    affiliation: "*, 1, 2"
+    equal-contrib: true
+    affiliation: "1, 2"
     
 affiliations:
  - name: Faculty of Medicine and Dentistry, Queen Mary University of London
@@ -43,13 +45,12 @@ affiliations:
    index: 6
  - name: NIHR Biomedical Research Centre and Department of Dermatology, Royal Victoria Infirmary, Newcastle Hospitals NHS Foundation Trust, Newcastle upon Tyne, UK
    index: 7
- - name: Both authors contributed equally to this work
-   index: *
 
 date: 13 August 2024
 bibliography: paper.bib
 
 ---
+
 
 # Summary
 
@@ -64,7 +65,7 @@ Longitudinal data, characterised by repeated observations of the same subjects o
 Users can install the package to a local Python environment. Once installed, the package provides various functions for analysing temporal properties of longitudinal data directly from the command-line interface or any Python integrated development environment (IDE). Users start by loading their longitudinal data into a DataFrame and using the provided functions to analyse and visualise the temporal patterns.  Figure 1 shows the structure of the package. A Jupyter notebook with a working example is available Here.
 
 
-![Hierarchical structure of the Python package. The top level represents the package name, followed by the modules ‘score’, ‘trains’, and ‘visual’, with their respective functions listed underneath each module.\label{fig:figure1}](./images/figure1.png)
+![Hierarchical structure of the Python package. The top level represents the package name, followed by the modules ‘score’, ‘trains’, and ‘visual’, with their respective functions listed underneath each module.\label{fig:figure1}](./images/figure1.png){width=85%}
 
 
 The input DataFrame must contain the 'subject_id' and 'time_col' columns (Table 1). The ‘subject_id’ column should include unique identifiers for each subject in the dataset. The 'time_col' column should contain either date or date and time values in a format that is compatible with Python’s Pandas function ‘pandas.to_datetime'.
@@ -93,26 +94,27 @@ To provide a comprehensive overview of the detected trains, the package includes
 
 ## 5. Visualisation Tools
 
-![Examples of visualisations created using the package: (A) Grid plot, (B) Histogram, (C) Event count plot, (D) Train duration plot.\label{fig:figure2}](./images/figure2.png)
+![Examples of visualisations created using the package: (A) Grid plot, (B) Histogram, (C) Event count plot, (D) Train duration plot.\label{fig:figure2}](./images/figure2.png){width=85%}
 
-The package includes various visualisation tools to aid in the interpretation of the calculated metrics and detected trains:
-• Grid Plot: Visualise the relationship between MC and BP with a colour bar.
-• Histogram: Display the distribution of BP and MC, with options of separate or overlapping histograms.
-• Marginal Histograms: Combine scatter plot with histograms to explore the relationship between MC and BP, and their distributions. 
-• Train Duration Plots: Display the distribution of train durations.
-• Event Count Plots: Display the count of unique events per train.
+The package includes various visualisation tools to aid in the interpretation of the calculated metrics and detected trains: <br>
+• Grid Plot: Visualise the relationship between MC and BP with a colour bar. <br>
+• Histogram: Display the distribution of BP and MC, with options of separate or overlapping histograms.<br>
+• Marginal Histograms: Combine scatter plot with histograms to explore the relationship between MC and BP, and their distributions. <br>
+• Train Duration Plots: Display the distribution of train durations.<br>
+• Event Count Plots: Display the count of unique events per train.<br>
 
 The visualisation module offers plotting functions that facilitate group comparisons using the ‘hue’ parameter, enabling the user to colour-encode and segment data based on a specific categorical variable. Functions like ‘scatterplot’, ‘histogram’, ‘train_duration’, and ‘event_counts’ utilise this feature, making it valuable for researchers to uncover insights and present findings clearly. An example of this feature can be seen in the bottom half of the example notebook, under the section ‘Analysing Data with Group Comparisons’. 
 
 # Requirements and limitations
 
-• Data requirements: The input data must be in a tabular format (e.g., a pandas DataFrame) with specific column data:
-    - `subject_id`: A column containing unique identifiers for subjects. 
-    - `eventdate`: A column containing datetime values for events. 
-• Data preprocessing: The package assumes that the input data is clean and pre-processed. Missing values, incorrect data types, and outliers should be handled prior to analysis to ensure accurate results.
-• Parameters: The results of the train detection function are sensitive to the chosen parameters (e.g., maximum inter-event time, minimum number of events for a train). Careful tuning and domain-specific knowledge are required to set appropriate values for these parameters.
-• Visualisation limitations: While the package provides several visualisation tools, complex visualisations or custom plots may require additional coding and use of external libraries beyond what is provided by the package.
-• Interpreting the results: The interpretation of BP and MC is highly domain specific. Users need to have a good understanding of their field to draw meaningful conclusions from these metrics.
+• Data requirements: The input data must be in a tabular format (e.g., a pandas DataFrame) with specific column data: 
+- `subject_id`: A column containing unique identifiers for subjects.<br>
+- `eventdate`: A column containing datetime values for events. <br>
+
+• Data preprocessing: The package assumes that the input data is clean and pre-processed. Missing values, incorrect data types, and outliers should be handled prior to analysis to ensure accurate results.<br>
+• Parameters: The results of the train detection function are sensitive to the chosen parameters (e.g., maximum inter-event time, minimum number of events for a train). Careful tuning and domain-specific knowledge are required to set appropriate values for these parameters.<br>
+• Visualisation limitations: While the package provides several visualisation tools, complex visualisations or custom plots may require additional coding and use of external libraries beyond what is provided by the package.<br>
+• Interpreting the results: The interpretation of BP and MC is highly domain specific. Users need to have a good understanding of their field to draw meaningful conclusions from these metrics.<br>
 
 # Conclusion
 
