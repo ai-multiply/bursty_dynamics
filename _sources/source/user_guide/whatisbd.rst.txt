@@ -18,7 +18,7 @@ Key Features
   Detect and label event trains based on user-defined criteria such as maximum inter-event time and minimum burst size.
 
 - **Train-Level Analysis:**
-  Analyse BP and MC for detected event trains, providing insights into temporal patterns within clusters of events.
+  Analyse BP and MC for detected event trains, providing insights into temporal patterns within trains of events.
 
 - **Visualisation Tools:**
   Visualise temporal patterns with scatter plots, histograms, kernel density estimates (KDE), and more, facilitating interpretation of analysis results.
