@@ -62,8 +62,8 @@ License
     :target: https://badge.fury.io/py/bursty-dynamics
 .. |Documentation| image:: https://img.shields.io/badge/docs-latest-blue.svg
    :target: https://ai-multiply.github.io/bursty_dynamics/
-.. |DOI| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.13790003.svg
-  :target: https://doi.org/10.5281/zenodo.13790003
+.. |DOI| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.13798975.svg
+  :target: https://doi.org/10.5281/zenodo.13798975
 .. |License| image:: https://img.shields.io/badge/license-MIT-green.svg
    :target: https://github.com/ai-multiply/bursty_dynamics/blob/main/LICENSE.txt
 
