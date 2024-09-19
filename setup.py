@@ -5,7 +5,7 @@ DESCRIPTION = 'bursty_dynamics is a Python package designed to facilitate the an
     
 setup(
     name= 'bursty_dynamics',
-    version = '0.1.1', 
+    version = '0.1.2', 
     description = DESCRIPTION,
     packages = find_packages(),
     long_description = open('README.rst').read(),
