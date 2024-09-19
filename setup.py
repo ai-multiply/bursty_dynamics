@@ -1,13 +1,5 @@
 from setuptools import find_packages, setup
 
-
-try:
-    with open("README.rst", "r", encoding="utf-8") as fh:
-        long_description = fh.read()
-except FileNotFoundError:
-    long_description = "Long description of the bursty_dynamics package. README.rst not found."
-
-
 DESCRIPTION = 'bursty_dynamics is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualise results. '
 
     
@@ -16,8 +8,8 @@ setup(
     version = '0.1.1', 
     description = DESCRIPTION,
     packages = find_packages(),
-    long_description = long_description,
-    long_description_content_type = "text/markdown",
+    long_description = open('README.rst').read(),
+    long_description_content_type = "text/x-rst",
     url = "https://github.com/ai-multiply/bursty_dynamics",
     author = "Alisha Angdmebe",
     author_email = "alisha.angdembe1@gmail.com",
