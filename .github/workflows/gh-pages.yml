@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # Fetch all history for all branches and tags
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -23,20 +25,19 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
-    - name: Fetch previous commit
-      run: git fetch origin main
+        
+    - name: Fetch full commit history
+      run: git fetch --unshallow
 
     - name: Extract current release version
       id: current_version
       run: |
         grep -oP "(?<=release = ')[^']+" docs/conf.py > current_version.txt
-        cat current_version.txt
+        echo "Current version: $(cat current_version.txt)"
         
     - name: Check if there is a previous commit
       id: check_previous_commit
       run: |
-        git fetch --depth=2
         if git rev-parse HEAD~1 >/dev/null 2>&1; then
           echo "Previous commit exists"
           echo "previous_commit_exists=true" >> $GITHUB_ENV
@@ -49,11 +50,17 @@ jobs:
       id: previous_version
       run: |
         if [ "${{ env.previous_commit_exists }}" == "true" ]; then
-          git show HEAD~1:docs/conf.py | grep -oP "(?<=release = ')[^']+" > previous_version.txt
+          if git ls-tree HEAD~1 -- docs/conf.py >/dev/null 2>&1; then
+            # docs/conf.py exists in the previous commit
+            git show HEAD~1:docs/conf.py | grep -oP "(?<=release = ')[^']+" > previous_version.txt
+          else
+            # docs/conf.py does not exist in the previous commit
+            echo "0.0.0" > previous_version.txt
+          fi
         else
           echo "0.0.0" > previous_version.txt  # Fake previous release version
         fi
-        cat previous_version.txt
+        echo "Previous version: $(cat previous_version.txt)"
 
     - name: Compare release versions
       id: compare_versions
@@ -78,3 +85,5 @@ jobs:
       with:
         github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_dir: docs/_build/html
+        
+        

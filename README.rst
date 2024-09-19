@@ -4,7 +4,7 @@
 
 |PyPI| |Documentation|
     
-``Bursty Dynamics`` is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualise results.
+``bursty_dynamics`` is a Python package designed to facilitate the analysis of temporal patterns in longitudinal data. It provides functions to calculate the burstiness parameter (BP) and memory coefficient (MC), detect event trains, and visualise results.
 
 This package implements the alternate burstiness parameter described in the paper ‘Measuring Burstiness for Finite Event Sequences’ by Kim, Eun-Kyeong, and Hang-Hyun Jo, and memeory coefficient described in ‘Burstiness and Memory in Complex Systems’ by Goh, K.-I., and A.-L. Barabási. 
 
@@ -22,7 +22,7 @@ Features
 Installation
 ============
 
-You can install the bursty_dynamics via pip:
+You can install ``bursty_dynamics`` via pip:
 
 .. code-block:: sh
 
@@ -49,15 +49,15 @@ For more example of usage, please take a look at ``examples.ipynb`` in the examp
 
 Getting Help
 ============
-For more information about `bursty_dynamics`, please check out:
+For more information about ``bursty_dynamics``, please check out:
 
--  `bursty_dynamics` `documentation <https://ai-multiply.github.io/bursty_dynamics/>`__
+-  ``bursty_dynamics`` `documentation <https://ai-multiply.github.io/bursty_dynamics/>`__
 
 License
 =======
 |License|
 
-bursty_dynamics is licensed under the MIT License. See the LICENSE file for more details.
+``bursty_dynamics`` is licensed under the MIT License. See the LICENSE file for more details.
 
 .. |PyPI| image:: https://badge.fury.io/py/bursty-dynamics.svg
     :target: https://badge.fury.io/py/bursty-dynamics
