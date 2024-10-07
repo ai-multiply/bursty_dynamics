@@ -272,7 +272,7 @@ def train_duration(train_info_df, x_limit=5, hue=None,**kwargs):
 
 def event_counts(train_info_df, x_limit=30, hue=None, **kwargs):
     """
-    Plots a count of unique events per train from the given DataFrame.
+    Plots the count of non-duplicate timestamped events per train from the given DataFrame.
 
     Parameters
     ----------
@@ -315,8 +315,8 @@ def event_counts(train_info_df, x_limit=30, hue=None, **kwargs):
     sns.countplot(data=train_info_df[train_info_df["unique_event_counts"] <= x_limit], 
                   x="unique_event_counts", hue=hue, palette=palette, ax=ax, **kwargs)
     
-    ax.set_xlabel('Event counts per train', fontsize=14)
-    ax.set_ylabel('Counts', fontsize=14)
+    ax.set_xlabel('Number of Events per Train', fontsize=14)
+    ax.set_ylabel('Number of Trains', fontsize=14)
     ax.tick_params(axis='both', which='major', labelsize=14)
     ax.set_xticks(ax.get_xticks()) 
     ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
