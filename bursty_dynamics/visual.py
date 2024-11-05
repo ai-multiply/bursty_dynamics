@@ -77,7 +77,7 @@ def histogram(df, hist=True, set_axis=False, hue=None, **kwargs):
         
     Notes
     -----
-    - If 'hist' is True, it will create separate histograms for 'BP' and 'MC' side by side.
+    - If 'hist' is True, it will create separate histograms for 'BP' and 'MC' in a vertical layout.
     - If 'hist' is 'Both', it will create overlapping histograms for 'BP' and 'MC' on the same plot.
     - If 'hist' is 'BP' or 'MC', it will create a histogram for the specified column.
     - The `hue` parameter allows for segmented histograms based on the specified column.
