@@ -114,9 +114,9 @@ def find_interval_times(events):
         if events.dtype.type != np.datetime64:
             raise ValueError("Input must be datetime64 elements.")
         
-        # Ensure there are at least two events to find intervals
-        if len(events) < 2:
-            raise ValueError("At least two datetime events are required to find intervals.")
+        # # Ensure there are at least two events to find intervals. Unnecessary noise if there are a lot of subjects with less than 2 events.
+        # if len(events) < 2:
+        #     raise ValueError("At least two datetime events are required to find intervals.")
         
         # Calculate the intervals in minutes
         iet = (np.diff(events).astype('timedelta64[ns]').astype(int) / (10**9 * 60)).tolist()

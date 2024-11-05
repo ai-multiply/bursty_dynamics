@@ -114,7 +114,8 @@ def histogram(df, hist=True, set_axis=False, hue=None, **kwargs):
     if hist in ['BP', 'MC']:
         color = hist_options[hist]
         fig = plt.figure()
-        sns.histplot(data=df, x=hist, kde=True, hue=hue, palette=palette, color = color, **kwargs)
+        plot = sns.histplot(data=df, x=hist, kde=True, hue=hue, palette=palette, color = color, **kwargs)
+        sns.move_legend(plot, "upper left", bbox_to_anchor=(1, 1))
         if set_axis:
             plt.xlim(-1, 1)
         plt.close(fig)
@@ -132,18 +133,24 @@ def histogram(df, hist=True, set_axis=False, hue=None, **kwargs):
         return fig
     
     elif hist is True:
-        fig, axs = plt.subplots(1, len(hist_options), figsize=(12, 6))  # Create subplots based on number of hist_options
+        fig, axs = plt.subplots(2, 1, figsize=(7, 9))  # Create subplots based on number of hist_options
         for i, (column, color) in enumerate({'BP': 'blue', 'MC': 'magenta'}.items()):
             sns.histplot(data=df, x=column, hue=hue, kde=True, palette=palette, color=color, ax=axs[i], **kwargs)
             axs[i].set_xlabel(column)
+            
             if set_axis:
                 axs[i].set_xlim(-1, 1)
+
+        if hue is not None:
+            sns.move_legend(axs[0], "upper right", bbox_to_anchor=(1.35, 1))
+            sns.move_legend(axs[1], "upper right", bbox_to_anchor=(1.35, 1))
+
+        # plt.tight_layout()
         plt.close(fig)
         return fig
     
     else:
         print("Invalid 'hist' parameter. Please choose from 'BP', 'MC', 'Both', or True.")
-        
         
 
 def scatterplot(df, hue=None, set_axis=False, **kwargs):
@@ -192,8 +199,8 @@ def scatterplot(df, hue=None, set_axis=False, **kwargs):
             palette="tab10",
             joint_kws=dict(s=50, alpha=0.4, edgecolor=None),
             **kwargs)       
-        plot.ax_joint.legend(loc='upper right', bbox_to_anchor=(1.25, 1.22))
-        plt.subplots_adjust(right=0.8)
+        plt.legend(bbox_to_anchor=(1.25, 1), loc='upper left', title=hue) 
+        plt.subplots_adjust(right=1)
 
         
     else:
@@ -315,11 +322,14 @@ def event_counts(train_info_df, x_limit=30, hue=None, **kwargs):
     sns.countplot(data=train_info_df[train_info_df["unique_event_counts"] <= x_limit], 
                   x="unique_event_counts", hue=hue, palette=palette, ax=ax, **kwargs)
     
+    # Set axis labels
     ax.set_xlabel('Number of Events per Train', fontsize=14)
     ax.set_ylabel('Number of Trains', fontsize=14)
+    # Adjust tick parameters
     ax.tick_params(axis='both', which='major', labelsize=14)
-    ax.set_xticks(ax.get_xticks()) 
-    ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
+
+    plt.setp(ax.get_xticklabels(), rotation=45, ha='right')
+    plt.tight_layout()
     
     plt.close(fig)  # Prevents the plot from displaying in interactive environments
     
