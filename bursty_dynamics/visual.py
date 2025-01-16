@@ -260,6 +260,13 @@ def train_duration(train_info_df, x_limit=5, hue=None,**kwargs):
     if hue and hue not in train_info_df.columns:
         raise ValueError(f"Hue column '{hue}' not found in DataFrame.")
         
+    # Notify about train_id filtering
+    if (train_info_df["train_id"] == 0).any():
+        print("Rows with train_id = 0 found and will be excluded.")
+        train_info_df = train_info_df[train_info_df["train_id"] != 0]
+    else:
+        print("No rows with train_id = 0 found. Proceeding with all data.")
+        
     fig, ax = plt.subplots()
     
     if hue is not None:
@@ -286,6 +293,7 @@ def event_counts(train_info_df, x_limit=30, hue=None, **kwargs):
     train_info_df : DataFrame
         A DataFrame containing a column named 'unique_event_counts' which 
         holds the count of unique events (no duplicates at same time) for different entries.
+        Additionally, it is assumed that the DataFrame contains a 'train_id' column.
     x_limit : int, optional
         The upper limit for the x-axis. Default is 30.
     hue : str, optional
@@ -312,25 +320,33 @@ def event_counts(train_info_df, x_limit=30, hue=None, **kwargs):
     if hue and hue not in train_info_df.columns:
         raise ValueError(f"Hue column '{hue}' not found in DataFrame.")
         
-    fig, ax = plt.subplots(figsize=(8, 5))
+    # Check if any train_id == 0 exists
+    if (train_info_df["train_id"] == 0).any():
+        print("Rows with train_id = 0 found and will be excluded.")
+    else:
+        print("No rows with train_id = 0 found. Proceeding with all data.")
 
+    print(f"Filtering data to include 'unique_event_counts' ≤ {x_limit} (default value for x_limit is 30).")
+    filtered_data = train_info_df[(train_info_df["train_id"] != 0) & (train_info_df["unique_event_counts"] <= x_limit)]
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    
     if hue is not None:
         palette = sns.color_palette("bright", train_info_df[hue].nunique())
     else:
         palette = None
-
-    sns.countplot(data=train_info_df[train_info_df["unique_event_counts"] <= x_limit], 
+        
+    sns.countplot(data=filtered_data, 
                   x="unique_event_counts", hue=hue, palette=palette, ax=ax, **kwargs)
-    
+
     # Set axis labels
-    ax.set_xlabel('Number of Events per Train', fontsize=14)
+    ax.set_xlabel('Number of Unique Events per Train', fontsize=14)
     ax.set_ylabel('Number of Trains', fontsize=14)
     # Adjust tick parameters
     ax.tick_params(axis='both', which='major', labelsize=14)
 
     plt.setp(ax.get_xticklabels(), rotation=45, ha='right')
     plt.tight_layout()
-    
     plt.close(fig)  # Prevents the plot from displaying in interactive environments
     
     return fig

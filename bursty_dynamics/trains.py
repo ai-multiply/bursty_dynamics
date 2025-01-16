@@ -130,21 +130,23 @@ def train_info(train_df, subject_id, time_col, summary_statistic=None):
     train_sum['total_trains'] = train_sum[subject_id].map(df_updated[df_updated['train_id']!= 0].groupby(subject_id)["train_id"].nunique())
     
     if summary_statistic == True:
-        avg_trains = round(train_sum[train_sum['train_id'] != 0].groupby(subject_id)['train_id'].count().mean(), 2)
-        print(f'Average count of trains per patient: {avg_trains}')
+        filtered_train_sum = train_sum[train_sum['train_id'] != 0]
         
-        average_duration_days = (train_sum['train_end'] - train_sum['train_start']).dt.days.mean()
-        median_duration_days = (train_sum['train_end'] - train_sum['train_start']).dt.days.median()
+        avg_trains = round(filtered_train_sum.groupby(subject_id)['train_id'].count().mean(), 2)
+        print(f'Average number of trains per patient with at least one train: {avg_trains}')
+        
+        average_duration_days = (filtered_train_sum['train_end'] - filtered_train_sum['train_start']).dt.days.mean()
+        median_duration_days = (filtered_train_sum['train_end'] - filtered_train_sum['train_start']).dt.days.median()
 
         print("Average duration of trains (in days):", math.floor(average_duration_days))
         print("Median duration of trains (in days):", math.floor(median_duration_days))
 
-        min_unique_events = train_sum['unique_event_counts'].min()
-        max_unique_events = train_sum['unique_event_counts'].max()
+        min_unique_events = filtered_train_sum['unique_event_counts'].min()
+        max_unique_events = filtered_train_sum['unique_event_counts'].max()
         print(f"Range of unique events per train: {min_unique_events} - {max_unique_events}")
 
-        min_total_events = train_sum['total_term_counts'].min()
-        max_total_events = train_sum['total_term_counts'].max()
+        min_total_events = filtered_train_sum['total_term_counts'].min()
+        max_total_events = filtered_train_sum['total_term_counts'].max()
         print(f"Range of all events per train: {min_total_events} - {max_total_events}")
 
     return train_sum
@@ -163,7 +165,7 @@ def train_scores(train_df, subject_id, time_col, min_event_n=None, scatter=False
     time_col : str
         Name of the column containing the date.
     min_event_n : int, optional
-        Maximum IET for filtering events. Defaults to None.
+        Minimum number of events required in a train for it to be included in the dataset. Defaults to None.
     scatter : bool, optional
         Whether to plot scatter plot. Defaults to False.
     hist : str or None, optional
@@ -217,7 +219,7 @@ def train_scores(train_df, subject_id, time_col, min_event_n=None, scatter=False
     # Remove duplicate events for each subject on the same day
     train_df_updated = remove_duplicate_events(train_df, subject_id, time_col)
         
-    # Filter events based on the event max_iet
+    # Filter trains based on min event count
     if min_event_n:
         train_lengths = train_df_updated.groupby([subject_id, "train_id"])[time_col].transform('count')
         train_df_updated = train_df_updated[(train_lengths >= min_event_n) & (train_df_updated['train_id'] != 0)].copy()
